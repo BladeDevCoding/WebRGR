@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вживані автомобілі | AutoPrime</title>
+
+    <!-- Стилі -->
+    <!-- Мої стилі  -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Іконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Шрифт для людей з дислексией -->
+    <link href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.min.css" rel="stylesheet">
+    <!-- Додаткові Стилі + Темна й світла тема -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="fs/images/favicon.png">
+
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f46e5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .dark .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f46e5' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        
+        .dark .timeline-item::before {
+            background-color: #374151;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #4f46e5;
+            border: 4px solid white;
+            z-index: 1;
+        }
+        
+        .dark .timeline-dot {
+            border-color: #1f2937;
+        }
+        
+        /* Додаткові стилі для відповідності загальному дизайну сайту */
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Анімація для статусу "В процесі" */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .status-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Стилі для кнопок */
+        .btn-primary {
+            background-color: #4f46e5;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #4f46e5;
+            border: 1px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f5f3ff;
+            transform: translateY(-2px);
+        }
+        
+        .dark .btn-secondary {
+            background-color: #1f2937;
+            color: #818cf8;
+            border-color: #818cf8;
+        }
+        
+        .dark .btn-secondary:hover {
+            background-color: #374151;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <!-- Підключаємо навбар як веб-компонент -->
+    <nav-bar></nav-bar>
+    
+    <!-- Компонент доступності -->
+    <accessibility-menu></accessibility-menu>
+
+    <!-- Основний контент -->
+    <main class="container mx-auto mt-8 px-4 pb-16">
+        <!-- Заголовок сторінки -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Вживані автомобілі</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Якісні автомобілі з пробігом від перевірених власників</p>
+        </div>
+        
+        <!-- Повідомлення про тимчасову недоступність -->
+        <div class="max-w-5xl mx-auto bg-pattern rounded-3xl overflow-hidden shadow-xl border border-indigo-100 dark:border-indigo-900/30">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <img src="../fs/images/car-repair.svg" alt="Автомобіль на обслуговуванні" class="w-64 h-64 floating">
+                    </div>
+                    
+                    <div class="w-full md:w-2/3">
+                        <h2 class="text-3xl font-bold mb-6 text-indigo-700 dark:text-indigo-400">Розділ тимчасово недоступний</h2>
+                        
+                        <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
+                            Наразі ми працюємо над удосконаленням нашого сервісу вживаних автомобілів, щоб запропонувати вам тільки найкращі та перевірені варіанти.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="timeline-item pb-6">
+                                <div class="timeline-dot top-0"></div>
+                                <h3 class="font-bold text-lg mb-2">Ретельна перевірка автомобілів</h3>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Кожен автомобіль проходить повну технічну діагностику за 150+ параметрами, щоб гарантувати його надійність та безпеку.
+                                </p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                                    <span class="text-sm text-green-600 dark:text-green-400">Завершено</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item pb-6">
+                                <div class="timeline-dot top-0"></div>
+                                <h3 class="font-bold text-lg mb-2">Відновлення та підготовка</h3>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Ми відновлюємо автомобілі до ідеального стану, використовуючи тільки оригінальні запчастини та сертифіковані сервісні центри.
+                                </p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="h-2 w-2 rounded-full bg-yellow-500 mr-2"></div>
+                                    <span class="text-sm text-yellow-600 dark:text-yellow-400">В процесі</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item pb-6">
+                                <div class="timeline-dot top-0"></div>
+                                <h3 class="font-bold text-lg mb-2 flex items-center">
+                                    Юридична перевірка
+                                    <span class="ml-2 px-2 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 status-pulse">
+                                        Зараз виконується
+                                    </span>
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    <strong>Наразі проводимо ретельну юридичну перевірку</strong> кожного автомобіля, щоб виключити проблемні варіанти з юридичними обтяженнями, перевіряємо історію реєстрацій, ДТП та обмежень.
+                                </p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="h-2 w-2 rounded-full bg-blue-500 mr-2 animate-pulse"></div>
+                                    <span class="text-sm text-blue-600 dark:text-blue-400">Активна фаза</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot top-0"></div>
+                                <h3 class="font-bold text-lg mb-2">Створення каталогу</h3>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Формуємо зручний каталог з детальним описом, фотографіями та історією кожного автомобіля.
+                                </p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600 mr-2"></div>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Заплановано</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/catalog/new-cars.html" class="btn-primary py-3 px-6 rounded-lg text-center flex items-center justify-center gap-2">
+                                <i class="fas fa-car"></i>
+                                Переглянути нові авто
+                            </a>
+                            
+                            <a href="#notify-me" class="btn-secondary py-3 px-6 rounded-lg text-center flex items-center justify-center gap-2">
+                                <i class="fas fa-bell"></i>
+                                Повідомити про запуск
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Очікуваний час запуску -->
+        <div class="max-w-3xl mx-auto mt-12 mb-16 text-center">
+            <div class="inline-block px-6 py-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 mb-4">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Очікуваний запуск: 3-й квартал 2025</span>
+                </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">
+                Ми прагнемо запустити розділ вживаних автомобілів якомога швидше, але якість та надійність для нас важливіші за швидкість.
+            </p>
+        </div>
+        
+        <!-- Переваги вживаних автомобілів від AutoPrime -->
+        <div class="mt-16 mb-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Чому варто купувати вживані авто в AutoPrime</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Перевага 1 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-check-circle text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Гарантія якості</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Всі автомобілі проходять 150+ пунктів технічної перевірки. Ми надаємо гарантію на 12 місяців або 15 000 км пробігу.
+                    </p>
+                </div>
+                
+                <!-- Перевага 2 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-history text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Прозора історія</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Повна історія обслуговування, ремонтів та експлуатації. Ми надаємо детальний звіт про кожен автомобіль.
+                    </p>
+                </div>
+                
+                <!-- Перевага 3 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-wallet text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Вигідна ціна</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Економія до 30% порівняно з новими автомобілями при збереженні високої якості та надійності.
+                    </p>
+                </div>
+                
+                <!-- Перевага 4 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-exchange-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Програма обміну</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Можливість обміну вашого автомобіля на інший з нашого автопарку з вигідною доплатою.
+                    </p>
+                </div>
+                
+                <!-- Перевага 5 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-credit-card text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Гнучкі умови фінансування</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Кредитування та лізинг на вигідних умовах. Індивідуальний підхід до кожного клієнта.
+                    </p>
+                </div>
+                
+                <!-- Перевага 6 -->
+                <div class="feature-card card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-car-crash text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Захист від прихованих дефектів</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Страхування від прихованих дефектів та несправностей, які можуть виникнути після покупки.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Форма підписки на повідомлення про запуск -->
+        <div id="notify-me" class="max-w-3xl mx-auto gradient-bg rounded-2xl overflow-hidden shadow-xl">
+            <div class="p-8 md:p-10 relative">
+                <!-- Декоративний елемент -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">Дізнайтеся першими про запуск</h2>
+                <p class="text-indigo-200 mb-6 relative z-10">
+                    Залиште свою електронну адресу, і ми повідомимо вас, коли розділ вживаних автомобілів буде доступний.
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 relative z-10">
+                    <input type="email" placeholder="Ваша електронна пошта" class="flex-grow py-3 px-4 rounded-lg border-0 focus:ring-2 focus:ring-white">
+                    <button type="submit" class="py-3 px-6 bg-white text-indigo-600 font-medium rounded-lg hover:bg-indigo-50 transition-colors">
+                        Підписатися
+                    </button>
+                </form>
+                
+                <p class="text-indigo-200 text-sm mt-4 relative z-10">
+                    Ми не надсилаємо спам. Ви можете відписатися в будь-який момент.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Підключаємо скрипти -->
+    <script src="../theme.js" defer></script>
+    <script src="../Components/navbar.js"></script>
+    <script src="../Components/accessibility-menu.js"></script>
+    <script src="../scripts/accessibility-global.js"></script>
+    <script src="../Components/SiteFooter.js"></script>
+    
+    <script>
+        // Обробник для форми підписки
+        document.addEventListener('DOMContentLoaded', function() {
+            const subscribeForm = document.querySelector('#notify-me form');
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput && emailInput.value) {
+                        // Тут можна додати логіку для збереження email
+                        alert('Дякуємо за підписку! Ми повідомимо вас про запуск розділу вживаних автомобілів.');
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

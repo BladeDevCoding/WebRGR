@@ -1,0 +1,92 @@
+{
+  "offers": {
+    "znyzka-10-na-avtomobili-2022": {
+      "id": "offer-1",
+      "slug": "znyzka-10-na-avtomobili-2022",
+      "title": "Знижка 10% на всі автомобілі 2022 року",
+      "description": "Скористайтеся унікальною можливістю придбати автомобіль з вигодою до 10%",
+      "fullDescription": "<p>Скористайтеся унікальною можливістю придбати автомобіль з вигодою до 10%. Пропозиція діє на обмежений модельний ряд.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Умови акції:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Знижка 10% від рекомендованої роздрібної ціни</li><li>При обміні вашого автомобіля за програмою Trade-in - додаткова знижка 2%</li><li>Подарунковий сертифікат на сервісне обслуговування на суму 5000 грн</li><li>Перше ТО безкоштовно</li></ul>",
+      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3",
+      "category": "discount",
+      "categoryName": "Знижки",
+      "endDate": "2023-12-31",
+      "features": [
+        "Додаткова знижка при обміні",
+        "Подарунковий сертифікат на сервіс",
+        "Безкоштовне ТО"
+      ],
+      "badge": {
+        "text": "Гаряча пропозиція",
+        "color": "red"
+      },
+      "isSpecial": true
+    },
+    "credit-program-0-percent": {
+      "id": "offer-2",
+      "slug": "credit-program-0-percent",
+      "title": "Кредит 0% на 12 місяців",
+      "description": "Спеціальна кредитна програма з першим внеском від 30%",
+      "fullDescription": "<p>Унікальна можливість придбати автомобіль у кредит з нульовою відсотковою ставкою на перший рік.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Умови програми:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Перший внесок від 30%</li><li>Термін кредитування - 12 місяців</li><li>Без прихованих комісій</li><li>Можливість дострокового погашення</li></ul>",
+      "image": "https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-4.0.3",
+      "category": "credit",
+      "categoryName": "Кредит",
+      "endDate": "2023-12-31",
+      "features": [
+        "0% на перший рік",
+        "Швидке оформлення",
+        "Без прихованих платежів"
+      ],
+      "badge": {
+        "text": "Вигідно",
+        "color": "green"
+      },
+      "isSpecial": true
+    },
+    "winter-service-20-off": {
+      "id": "offer-3",
+      "slug": "winter-service-20-off",
+      "title": "Зимовий сервіс -20%",
+      "description": "Підготуйте свій автомобіль до зими з вигодою",
+      "fullDescription": "<p>Комплексна підготовка вашого автомобіля до зимового сезону зі знижкою 20%.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Що входить:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Діагностика ходової частини</li><li>Перевірка гальмівної системи</li><li>Діагностика акумулятора</li><li>Перевірка системи опалення</li></ul>",
+      "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3",
+      "category": "service",
+      "categoryName": "Сервіс",
+      "endDate": "2023-11-30",
+      "features": [
+        "Комплексна діагностика",
+        "Знижка 20%",
+        "Гарантія на роботи"
+      ],
+      "badge": {
+        "text": "Сезонна",
+        "color": "blue"
+      },
+      "isSpecial": false
+    },
+    "audi-q5-2022-special-offer": {
+      "id": "model-1",
+      "slug": "audi-q5-2022-special-offer",
+      "title": "Audi Q5 2022 - Спеціальна пропозиція",
+      "name": "Audi Q5",
+      "description": "Преміальний кросовер за спеціальною ціною",
+      "fullDescription": "<p>Отримайте Audi Q5 2022 року випуску за спеціальною ціною з додатковими перевагами.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Переваги пропозиції:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Знижка 10% від рекомендованої роздрібної ціни</li><li>Повний привід quattro</li><li>Шкіряний салон та панорамний дах включені</li><li>3 роки гарантії без обмеження пробігу</li></ul>",
+      "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6",
+      "category": "models",
+      "categoryName": "Спецпропозиція",
+      "endDate": "2023-12-31",
+      "features": [
+        "Повний привід",
+        "Шкіряний салон",
+        "Панорамний дах"
+      ],
+      "discount": "10%",
+      "oldPrice": "1 450 000",
+      "newPrice": "1 305 000",
+      "badge": {
+        "text": "Топ продажів",
+        "color": "indigo"
+      },
+      "isSpecial": true
+    }
+  }
+} 

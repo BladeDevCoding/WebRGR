@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Нові автомобілі | AutoPrime</title>
+    
+    <!-- Стилі -->
+    <!-- Мої стилі  -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Іконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Шрифт для людей з дислексией -->
+    <link href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.min.css" rel="stylesheet">
+    <!-- Додаткові Стилі + Темна й світла тема -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="fs/images/favicon.png">
+
+    <style>
+        /* Стилі для фіксованих фільтрів на ПК */
+        @media (min-width: 1024px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: 1rem;
+                max-height: calc(100vh - 2rem);
+                overflow-y: auto;
+            }
+        }
+        
+        /* Стилі для фільтрів - темна тема */
+        .dark .filter-container {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+        }
+        
+        .dark .filter-title {
+            color: white;
+        }
+        
+        .dark .filter-group-title {
+            color: white;
+        }
+        
+        .dark .filter-select {
+            background-color: #2d3748;
+            color: white;
+            border: 1px solid #4a5568;
+        }
+        
+        .dark .filter-label {
+            color: white;
+        }
+        
+        .dark .filter-checkbox {
+            accent-color: #4f46e5;
+        }
+        
+        .dark .filter-button {
+            background-color: #4f46e5;
+            color: white;
+        }
+        
+        .dark .filter-button:hover {
+            background-color: #4338ca;
+        }
+        
+        /* Стилі для фільтрів - світла тема */
+        .filter-container {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+        
+        .filter-select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background-color: #f9fafb;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+        }
+        
+        .filter-checkbox {
+            margin-right: 0.5rem;
+            accent-color: #4f46e5;
+        }
+        
+        .filter-label {
+            color: #374151;
+        }
+        
+        .filter-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .filter-button {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background-color: #4f46e5;
+            color: white;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        .filter-button:hover {
+            background-color: #4338ca;
+        }
+        
+        /* Стилі для мобільних пристроїв */
+        @media (max-width: 1023px) {
+            .filter-container {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <!-- Підключаємо навбар як веб-компонент -->
+    <nav-bar></nav-bar>
+    
+    <!-- Компонент доступності -->
+    <accessibility-menu></accessibility-menu>
+
+    <!-- Основний контент -->
+    <main class="container mx-auto mt-8 px-4 pb-16">
+        <cars-catalog-hero></cars-catalog-hero>
+        
+        <div class="max-w-7xl mx-auto lg:flex lg:gap-8">
+            <!-- Фільтри (зліва на ПК, зверху на мобільних) -->
+            <div class="lg:w-1/4 mb-6 lg:mb-0">
+                <div class="sticky-sidebar">
+                    <cars-catalog-filters></cars-catalog-filters>
+                </div>
+            </div>
+            
+            <!-- Сітка автомобілів (справа на ПК, знизу на мобільних) -->
+            <div class="lg:w-3/4">
+                <cars-catalog-grid></cars-catalog-grid>
+            </div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Підключаємо скрипти -->
+    <script src="../theme.js" defer></script>
+    <script src="../Components/navbar.js"></script>
+    <script src="../Components/accessibility-menu.js"></script>
+    <script src="../scripts/accessibility-global.js"></script>
+    <script src="../Components/SiteFooter.js"></script>
+
+    <!-- Сервіс для роботи з даними автомобілів -->
+    <script src="../utils/carsService.js"></script>
+
+    <!-- Компоненти каталогу автомобілів -->
+    <script src="../Components/cars-catalog/CarsCatalogHero.js"></script>
+    <script src="../Components/cars-catalog/CarsCatalogFilters.js"></script>
+    <script src="../Components/cars-catalog/CarsCatalogGrid.js"></script>
+</body>
+</html> 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація автомобілів | AutoPrime</title>
+
+    <!-- Стилі -->
+    <!-- Мої стилі  -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Іконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Шрифт для людей з дислексией -->
+    <link href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.min.css" rel="stylesheet">
+    <!-- Додаткові Стилі + Темна й світла тема -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="fs/images/favicon.png">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <!-- Підключаємо навбар як веб-компонент -->
+    <nav-bar></nav-bar>
+    
+    <!-- Компонент доступності -->
+    <accessibility-menu></accessibility-menu>
+
+    <!-- Основний контент -->
+    <main class="container mx-auto mt-8 px-4 pb-16">
+        <registration-hero></registration-hero>
+        <registration-navigation></registration-navigation>
+        
+        <div class="max-w-4xl mx-auto">
+            <services-section></services-section>
+            <documents-section></documents-section>
+            <process-section></process-section>
+            <prices-section></prices-section>
+            <faq-section></faq-section>
+            <application-form></application-form>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Підключаємо скрипти -->
+    <script src="../theme.js" defer></script>
+    <script src="../Components/navbar.js"></script>
+    <script src="../Components/accessibility-menu.js"></script>
+    <script src="../scripts/accessibility-global.js"></script>
+    <script src="../Components/SiteFooter.js"></script>
+
+    <!-- Компоненти сторінки реєстрації автомобілів -->
+    <script src="../components/registration/RegistrationHero.js"></script>
+    <script src="../components/registration/RegistrationNavigation.js"></script>
+    <script src="../components/registration/ServicesSection.js"></script>
+    <script src="../components/registration/DocumentsSection.js"></script>
+    <script src="../components/registration/ProcessSection.js"></script>
+    <script src="../components/registration/PricesSection.js"></script>
+    <script src="../components/registration/FaqSection.js"></script>
+    <script src="../components/registration/ApplicationForm.js"></script>
+</body>
+</html> 

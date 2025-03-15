@@ -1,0 +1,88 @@
+{
+  "seasonal": {
+    "winter-service-package": {
+      "id": "season-1",
+      "slug": "winter-service-package",
+      "title": "Зимовий сервісний пакет",
+      "description": "Комплексна підготовка вашого автомобіля до зимового сезону",
+      "fullDescription": "<p>Підготуйте свій автомобіль до зими з нашим комплексним сервісним пакетом. Ми подбаємо про безпеку та комфорт вашого автомобіля в холодну пору року.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Що входить в пакет:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Діагностика гальмівної системи</li><li>Перевірка акумулятора та електросистеми</li><li>Діагностика системи опалення</li><li>Перевірка рівнів технічних рідин</li></ul>",
+      "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3",
+      "badge": {
+        "text": "Зимова пропозиція",
+        "color": "blue"
+      },
+      "features": [
+        "Комплексна діагностика",
+        "Заміна рідин",
+        "Перевірка акумулятора"
+      ],
+      "price": "2999",
+      "oldPrice": "3999",
+      "endDate": "2024-02-28",
+      "isActive": true
+    },
+    "summer-inspection": {
+      "id": "season-2",
+      "slug": "summer-inspection",
+      "title": "Літній технічний огляд",
+      "description": "Перевірка кондиціонера та підготовка до спекотного сезону",
+      "fullDescription": "<p>Забезпечте комфортну подорож влітку з нашим спеціальним пакетом обслуговування. Особлива увага приділяється системі кондиціонування та охолодження.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Послуги включають:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Діагностика та дезінфекція кондиціонера</li><li>Перевірка системи охолодження</li><li>Діагностика підвіски</li><li>Перевірка шин</li></ul>",
+      "image": "https://plus.unsplash.com/premium_photo-1682146874717-204139b9f29d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "badge": {
+        "text": "Літня пропозиція",
+        "color": "yellow"
+      },
+      "features": [
+        "Обслуговування кондиціонера",
+        "Перевірка охолодження",
+        "Діагностика підвіски"
+      ],
+      "price": "1999",
+      "oldPrice": "2499",
+      "endDate": "2024-08-31",
+      "isActive": true
+    },
+    "spring-maintenance": {
+      "id": "season-3",
+      "slug": "spring-maintenance",
+      "title": "Весняне обслуговування",
+      "description": "Комплексна перевірка після зимового періоду",
+      "fullDescription": "<p>Весняний пакет обслуговування допоможе відновити ваш автомобіль після зимового періоду та підготувати його до теплого сезону.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Програма включає:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Діагностика ходової частини</li><li>Перевірка гальмівної системи</li><li>Заміна фільтрів</li><li>Перевірка освітлення</li></ul>",
+      "image": "https://plus.unsplash.com/premium_photo-1664392316407-10189f207a56?q=80&w=1637&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "badge": {
+        "text": "Весняна пропозиція",
+        "color": "green"
+      },
+      "features": [
+        "Діагностика після зими",
+        "Заміна фільтрів",
+        "Перевірка ходової"
+      ],
+      "price": "2499",
+      "oldPrice": "2999",
+      "endDate": "2024-05-31",
+      "isActive": true
+    },
+    "autumn-checkup": {
+      "id": "season-4",
+      "slug": "autumn-checkup",
+      "title": "Осінній техогляд",
+      "description": "Підготовка до осінньо-зимового періоду",
+      "fullDescription": "<p>Осінній техогляд допоможе підготувати ваш автомобіль до складних погодних умов та забезпечити безпеку в дощову погоду.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">У програму входить:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Перевірка склоочисників та омивача</li><li>Діагностика освітлення</li><li>Перевірка гальмівної системи</li><li>Діагностика акумулятора</li></ul>",
+      "image": "https://plus.unsplash.com/premium_photo-1682126117799-064f3f7a034e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "badge": {
+        "text": "Осіння пропозиція",
+        "color": "orange"
+      },
+      "features": [
+        "Підготовка до дощів",
+        "Перевірка освітлення",
+        "Діагностика гальм"
+      ],
+      "price": "1799",
+      "oldPrice": "2299",
+      "endDate": "2024-11-30",
+      "isActive": true
+    }
+  }
+} 

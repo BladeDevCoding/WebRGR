@@ -1,0 +1,96 @@
+{
+  "service": {
+    "oil-change-discount": {
+      "id": "service-1",
+      "slug": "oil-change-discount",
+      "title": "Заміна масла зі знижкою 20%",
+      "description": "Комплексна заміна масла та фільтрів з використанням оригінальних матеріалів",
+      "fullDescription": "<p>Скористайтеся вигідною пропозицією на комплексну заміну масла у вашому автомобілі. Ми використовуємо тільки оригінальні матеріали та комплектуючі.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">У вартість входить:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Заміна моторного масла</li><li>Заміна масляного фільтра</li><li>Заміна повітряного фільтра</li><li>Діагностика двигуна</li></ul>",
+      "image": "https://images.unsplash.com/photo-1487754180451-c456f719a1fc",
+      "category": "service",
+      "categoryName": "Сервіс",
+      "price": "1200",
+      "oldPrice": "1500",
+      "endDate": "2024-03-31",
+      "features": [
+        "Оригінальні матеріали",
+        "Гарантія на роботи",
+        "Безкоштовна діагностика"
+      ],
+      "badge": {
+        "text": "Знижка 20%",
+        "color": "red"
+      },
+      "isActive": true
+    },
+    "battery-check": {
+      "id": "service-2",
+      "slug": "battery-check",
+      "title": "Діагностика АКБ безкоштовно",
+      "description": "Безкоштовна діагностика стану акумулятора перед зимовим сезоном",
+      "fullDescription": "<p>Перевірте стан вашого акумулятора перед зимовим сезоном абсолютно безкоштовно. При необхідності заміни - отримайте знижку 15% на новий акумулятор.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Діагностика включає:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Перевірка напруги</li><li>Тест навантаження</li><li>Перевірка генератора</li><li>Перевірка клем та з'єднань</li></ul>",
+      "image": "https://images.unsplash.com/photo-1563391017873-9c5c3de04cb5",
+      "category": "service",
+      "categoryName": "Сервіс",
+      "price": "0",
+      "oldPrice": "299",
+      "endDate": "2024-02-28",
+      "features": [
+        "Безкоштовна діагностика",
+        "Знижка на новий АКБ",
+        "Експрес-перевірка"
+      ],
+      "badge": {
+        "text": "Безкоштовно",
+        "color": "green"
+      },
+      "isActive": true
+    },
+    "computer-diagnostics": {
+      "id": "service-3",
+      "slug": "computer-diagnostics",
+      "title": "Комп'ютерна діагностика -30%",
+      "description": "Повна комп'ютерна діагностика всіх систем автомобіля",
+      "fullDescription": "<p>Проведіть повну комп'ютерну діагностику вашого автомобіля за спеціальною ціною. Виявимо всі приховані проблеми та попередимо можливі несправності.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Перевіряємо:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Двигун та трансмісію</li><li>Гальмівну систему</li><li>Системи безпеки</li><li>Електронні блоки керування</li></ul>",
+      "image": "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7",
+      "category": "service",
+      "categoryName": "Сервіс",
+      "price": "499",
+      "oldPrice": "699",
+      "endDate": "2024-03-15",
+      "features": [
+        "Повна діагностика",
+        "Розшифровка помилок",
+        "Рекомендації з ремонту"
+      ],
+      "badge": {
+        "text": "Економія 30%",
+        "color": "blue"
+      },
+      "isActive": true
+    },
+    "ac-service": {
+      "id": "service-4",
+      "slug": "ac-service",
+      "title": "Заправка кондиціонера",
+      "description": "Заправка та дезінфекція системи кондиціонування",
+      "fullDescription": "<p>Підготуйте систему кондиціонування до літнього сезону. Професійна заправка та обслуговування за спеціальною ціною.</p><h3 class=\"text-xl font-bold mt-6 mb-3\">Послуги включають:</h3><ul class=\"list-disc pl-6 space-y-2\"><li>Діагностика системи</li><li>Заправка фреоном</li><li>Дезінфекція системи</li><li>Перевірка на герметичність</li></ul>",
+      "image": "https://images.unsplash.com/photo-1449965829218-7d206f9d0ca9",
+      "category": "service",
+      "categoryName": "Сервіс",
+      "price": "799",
+      "oldPrice": "999",
+      "endDate": "2024-05-31",
+      "features": [
+        "Заправка фреоном",
+        "Антибактеріальна обробка",
+        "Перевірка герметичності"
+      ],
+      "badge": {
+        "text": "Вигідна пропозиція",
+        "color": "indigo"
+      },
+      "isActive": true
+    }
+  }
+} 

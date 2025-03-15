@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервісні акції | AutoPrime</title>
+
+    <!-- Стилі -->
+    <!-- Мої стилі  -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Іконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Шрифт для людей з дислексией -->
+    <link href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.min.css" rel="stylesheet">
+    <!-- Додаткові Стилі + Темна й світла тема -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="fs/images/favicon.png">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <nav-bar></nav-bar>
+    <accessibility-menu></accessibility-menu>
+
+    <main class="container mx-auto mt-8 px-4 pb-16">
+        <!-- Заголовок -->
+        <div class="max-w-4xl mx-auto mb-8">
+            <h1 class="text-4xl font-bold mb-4">Сервісні акції</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400">Спеціальні пропозиції на обслуговування вашого автомобіля</p>
+        </div>
+
+        <!-- Список сервісних акцій -->
+        <div class="max-w-4xl mx-auto">
+            <service-offers></service-offers>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Підключаємо скрипти -->
+    <script src="../theme.js" defer></script>
+    <script src="../Components/navbar.js"></script>
+    <script src="../Components/accessibility-menu.js"></script>
+    <script src="../scripts/accessibility-global.js"></script>
+    <script src="../Components/SiteFooter.js"></script>
+    <script type="module" src="../components/offers/ServiceOffers.js"></script>
+</body>
+</html> 
