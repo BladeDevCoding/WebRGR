@@ -1,10 +1,7 @@
 # 🚗 AutoPrime - Веб-сайт автомобільного дилерського центру
 
 <div align="center">
-<<<<<<< HEAD
   <img src="assets/logo.png" alt="AutoPrime Logo" width="200"/>
-=======
->>>>>>> fce73eb9ba5dfd6ae42aad0975b88bee898fa825
   <p><em>Ваш надійний партнер у світі автомобілів</em></p>
 </div>
 
@@ -14,11 +11,6 @@
 - [🚀 Функціонал](#-функціонал)
 - [📂 Структура проекту](#-структура-проекту)
 - [✨ Особливості](#-особливості)
-<<<<<<< HEAD
-- [⚙️ Встановлення](#-встановлення)
-- [👨‍💻 Розробка](#-розробка)
-=======
->>>>>>> fce73eb9ba5dfd6ae42aad0975b88bee898fa825
 
 ## 🎯 Про проект
 
@@ -37,11 +29,6 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-<<<<<<< HEAD
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-=======
->>>>>>> fce73eb9ba5dfd6ae42aad0975b88bee898fa825
-</div>
 
 ## 🚀 Функціонал
 
