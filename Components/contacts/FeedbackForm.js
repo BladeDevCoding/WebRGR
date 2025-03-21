@@ -94,7 +94,7 @@ class FeedbackForm extends HTMLElement {
             
             if (!form || !toast) return;
             
-            // Закриття toast при кліку на кнопку закриття
+            
             closeToastBtn?.addEventListener('click', () => {
                 this.hideToast(toast);
             });
@@ -102,7 +102,7 @@ class FeedbackForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Отримуємо значення полів
+                
                 const name = document.getElementById('name').value;
                 const phone = document.getElementById('phone').value;
                 const email = document.getElementById('email').value;
@@ -110,9 +110,9 @@ class FeedbackForm extends HTMLElement {
                 const message = document.getElementById('message').value;
                 const privacy = document.getElementById('privacy').checked;
                 
-                // Перевіряємо заповнення обов'язкових полів
+                
                 if (!name || !phone || !email || !subject || !message || !privacy) {
-                    // Додаємо анімацію струшування для невалідних полів
+                    
                     const requiredFields = form.querySelectorAll('[required]');
                     requiredFields.forEach(field => {
                         if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
@@ -127,26 +127,26 @@ class FeedbackForm extends HTMLElement {
                     return;
                 }
                 
-                // Імітуємо відправку форми
+                
                 const submitButton = form.querySelector('button[type="submit"]');
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                 
-                // Через 1.5 секунди показуємо toast і скидаємо форму
+                
                 setTimeout(() => {
                     form.reset();
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="far fa-paper-plane mr-2"></i> Надіслати повідомлення';
                     this.showToast(toast);
                     
-                    // Автоматично ховаємо toast через 8 секунд
+                    
                     setTimeout(() => {
                         this.hideToast(toast);
                     }, 8000);
                 }, 1500);
             });
             
-            // Додаємо стилі для анімації струшування
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

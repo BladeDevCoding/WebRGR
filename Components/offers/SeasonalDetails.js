@@ -73,7 +73,7 @@ class SeasonalDetails extends HTMLElement {
             });
         }
 
-        // Закриття модального вікна при кліку поза ним
+        
         modal?.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.add('hidden');
@@ -223,7 +223,7 @@ class SeasonalDetails extends HTMLElement {
         `;
     }
 
-    // ... Додайте інші методи з OfferDetails.js (setupEventListeners, showSuccessMessage, тощо)
+    
 }
 
 customElements.define('seasonal-details', SeasonalDetails); 

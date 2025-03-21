@@ -10,7 +10,7 @@ class CarsCatalogFilters extends HTMLElement {
         this.yearRanges = [];
         this.enginePowerRanges = [];
         this.selectedBrand = '';
-        this.isFilterOpen = false; // Для мобільної версії
+        this.isFilterOpen = false; 
         this.activeFilters = {};
     }
 
@@ -22,7 +22,7 @@ class CarsCatalogFilters extends HTMLElement {
 
     async loadFilterData() {
         if (window.carsService) {
-            // Завантажуємо всі дані для фільтрів
+            
             this.brands = await window.carsService.getBrands();
             this.fuelTypes = await window.carsService.getFuelTypes();
             this.transmissionTypes = await window.carsService.getTransmissionTypes();
@@ -422,13 +422,13 @@ class CarsCatalogFilters extends HTMLElement {
         if (transmissionFilters.length) this.activeFilters.transmission = transmissionFilters;
         if (driveFilters.length) this.activeFilters.drive = driveFilters;
         
-        // Закриваємо мобільні фільтри після застосування
+        
         this.isFilterOpen = false;
         
-        // Застосовуємо фільтри
+        
         this.applyActiveFilters();
         
-        // Оновлюємо відображення
+        
         this.render();
         this.setupEventListeners();
     }
@@ -436,25 +436,25 @@ class CarsCatalogFilters extends HTMLElement {
     applyActiveFilters() {
         console.log('Застосовуємо фільтри:', this.activeFilters);
         
-        // Створюємо подію з активними фільтрами
+        
         const event = new CustomEvent('filters-changed', { 
             detail: this.activeFilters
         });
         
-        // Відправляємо подію
+        
         document.dispatchEvent(event);
     }
 
     resetFilters() {
-        // Скидаємо всі активні фільтри
+        
         this.activeFilters = {};
         this.selectedBrand = '';
         this.models = [];
         
-        // Застосовуємо скинуті фільтри
+        
         this.applyActiveFilters();
         
-        // Оновлюємо відображення
+        
         this.render();
         this.setupEventListeners();
     }

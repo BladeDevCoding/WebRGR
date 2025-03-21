@@ -189,16 +189,16 @@ class CalculatorSection extends HTMLElement {
             const resultPlaceholder = this.querySelector('#result-placeholder');
             const calculationResult = this.querySelector('#calculation-result');
             
-            // Функція для перемикання опцій в залежності від типу страхування
+            
             const toggleOptions = () => {
                 const selectedType = insuranceType.value;
                 
-                // Приховуємо всі опції
+                
                 osagoOptions.classList.add('hidden');
                 kaskoOptions.classList.add('hidden');
                 greenCardOptions.classList.add('hidden');
                 
-                // Показуємо опції для вибраного типу
+                
                 if (selectedType === 'osago') {
                     osagoOptions.classList.remove('hidden');
                 } else if (selectedType === 'kasko') {
@@ -208,20 +208,20 @@ class CalculatorSection extends HTMLElement {
                 }
             };
             
-            // Встановлюємо початковий стан
+            
             toggleOptions();
             
-            // Додаємо обробник події зміни типу страхування
+            
             insuranceType.addEventListener('change', toggleOptions);
             
-            // Обробник кнопки розрахунку
+            
             calculateButton.addEventListener('click', () => {
-                // Імітуємо розрахунок (в реальному додатку тут буде логіка розрахунку)
+                
                 calculateButton.disabled = true;
                 calculateButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Розрахунок...';
                 
                 setTimeout(() => {
-                    // Заповнюємо результати
+                    
                     const selectedType = insuranceType.value;
                     const resultType = this.querySelector('#result-type');
                     const resultPeriod = this.querySelector('#result-period');
@@ -241,15 +241,15 @@ class CalculatorSection extends HTMLElement {
                         const carYear = this.querySelector('#car-year').value;
                         const franchise = parseFloat(this.querySelector('#franchise').value);
                         
-                        // Спрощений розрахунок для прикладу
-                        let rate = 0.05; // Базова ставка 5%
                         
-                        // Коригування за віком авто
+                        let rate = 0.05; 
+                        
+                        
                         if (carYear === 'new') rate -= 0.005;
                         else if (carYear === '3to5') rate += 0.01;
                         else if (carYear === 'more5') rate += 0.02;
                         
-                        // Коригування за франшизою
+                        
                         rate -= franchise * 0.005;
                         
                         const price = Math.round(carPrice * rate);
@@ -271,7 +271,7 @@ class CalculatorSection extends HTMLElement {
                         
                         resultPeriod.textContent = periodText;
                         
-                        // Спрощений розрахунок для прикладу
+                        
                         let basePrice = 0;
                         if (countries === 'all') basePrice = 3600;
                         else if (countries === 'europe') basePrice = 3000;
@@ -282,15 +282,15 @@ class CalculatorSection extends HTMLElement {
                         resultCoverage.textContent = 'Відповідно до законодавства країни перебування';
                     }
                     
-                    // Показуємо результат
+                    
                     resultPlaceholder.classList.add('hidden');
                     calculationResult.classList.remove('hidden');
                     
-                    // Відновлюємо кнопку
+                    
                     calculateButton.disabled = false;
                     calculateButton.innerHTML = '<i class="fas fa-calculator mr-2"></i> Розрахувати вартість';
                     
-                    // Прокручуємо до результату
+                    
                     calculationResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 1500);
             });

@@ -120,51 +120,51 @@ class HomeHero extends HTMLElement {
             let currentSlide = 0;
             let interval;
 
-            // Функція для показу слайду
+            
             const showSlide = (index) => {
-                // Приховуємо всі слайди
+                
                 slides.forEach(slide => {
                     slide.style.display = 'none';
                 });
                 
-                // Знімаємо активний клас з усіх точок
+                
                 dots.forEach(dot => {
                     dot.classList.remove('active');
                     dot.classList.remove('opacity-100');
                     dot.classList.add('opacity-50');
                 });
                 
-                // Показуємо поточний слайд
+                
                 slides[index].style.display = 'block';
                 
-                // Додаємо активний клас до поточної точки
+                
                 dots[index].classList.add('active', 'opacity-100');
                 dots[index].classList.remove('opacity-50');
                 
-                // Оновлюємо індекс поточного слайду
+                
                 currentSlide = index;
             };
 
-            // Функція для переходу до наступного слайду
+            
             const nextSlide = () => {
                 currentSlide = (currentSlide + 1) % slides.length;
                 showSlide(currentSlide);
             };
 
-            // Функція для переходу до попереднього слайду
+            
             const prevSlide = () => {
                 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
                 showSlide(currentSlide);
             };
 
-            // Показуємо перший слайд
+            
             showSlide(0);
 
-            // Додаємо обробники подій для кнопок
+            
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-            // Додаємо обробники подій для точок
+            
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     showSlide(index);
@@ -172,13 +172,13 @@ class HomeHero extends HTMLElement {
                 });
             });
 
-            // Функція для скидання інтервалу
+            
             const resetInterval = () => {
                 clearInterval(interval);
                 interval = setInterval(nextSlide, 5000);
             };
 
-            // Запускаємо автоматичну зміну слайдів
+            
             resetInterval();
         }, 0);
     }

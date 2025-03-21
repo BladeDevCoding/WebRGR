@@ -10,7 +10,7 @@ class AllOffers extends HTMLElement {
 
     async connectedCallback() {
         try {
-            // Завантажуємо всі пропозиції
+            
             this.offers = await getAllOffers();
             this.filteredOffers = [...this.offers];
             
@@ -24,13 +24,13 @@ class AllOffers extends HTMLElement {
     }
     
     setupEventListeners() {
-        // Налаштовуємо фільтрацію за категоріями
+        
         this.querySelectorAll('[data-category]').forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.dataset.category;
                 this.activeCategory = category;
                 
-                // Оновлюємо активну кнопку
+                
                 this.querySelectorAll('[data-category]').forEach(btn => {
                     btn.classList.remove('bg-blue-600', 'text-white');
                     btn.classList.add('bg-gray-100', 'text-gray-800', 'dark:bg-gray-800', 'dark:text-gray-200');
@@ -39,14 +39,14 @@ class AllOffers extends HTMLElement {
                 button.classList.remove('bg-gray-100', 'text-gray-800', 'dark:bg-gray-800', 'dark:text-gray-200');
                 button.classList.add('bg-blue-600', 'text-white');
                 
-                // Фільтруємо пропозиції
+                
                 if (category === 'all') {
                     this.filteredOffers = [...this.offers];
                 } else {
                     this.filteredOffers = this.offers.filter(offer => offer.category === category);
                 }
                 
-                // Оновлюємо відображення
+                
                 this.renderOffers();
             });
         });

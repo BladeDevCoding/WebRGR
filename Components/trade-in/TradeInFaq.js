@@ -66,7 +66,7 @@ class TradeInFaq extends HTMLElement {
                 const icon = item.querySelector('.faq-icon i');
                 
                 question.addEventListener('click', () => {
-                    // Закриваємо всі інші відповіді
+                    
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             const otherAnswer = otherItem.querySelector('.faq-answer');
@@ -77,10 +77,10 @@ class TradeInFaq extends HTMLElement {
                         }
                     });
                     
-                    // Перемикаємо поточну відповідь
+                    
                     answer.classList.toggle('hidden');
                     
-                    // Обертаємо іконку
+                    
                     if (answer.classList.contains('hidden')) {
                         icon.classList.remove('transform', 'rotate-180');
                     } else {

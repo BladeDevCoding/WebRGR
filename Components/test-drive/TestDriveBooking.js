@@ -126,7 +126,7 @@ class TestDriveBooking extends HTMLElement {
             }, 1500);
         });
 
-        // Закриття toast
+        
         const closeToastBtn = toast.querySelector('button[data-dismiss-target="#toast-success"]');
         closeToastBtn?.addEventListener('click', () => {
             this.hideToast(toast);

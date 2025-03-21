@@ -145,7 +145,7 @@ class ServiceBooking extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Тут можна додати код для відправки даних на сервер
+                
                 console.log('Форма запису на гарантійне обслуговування відправлена:', {
                     fullName: form.fullName.value,
                     phone: form.phone.value,
@@ -158,19 +158,19 @@ class ServiceBooking extends HTMLElement {
                     consent: form.consent.checked
                 });
                 
-                // Показуємо toast повідомлення
+                
                 if (toast) {
                     toast.classList.remove('translate-y-20', 'opacity-0');
                     toast.classList.add('translate-y-0', 'opacity-100');
                     
-                    // Ховаємо toast через 5 секунд
+                    
                     setTimeout(() => {
                         toast.classList.remove('translate-y-0', 'opacity-100');
                         toast.classList.add('translate-y-20', 'opacity-0');
                     }, 5000);
                 }
                 
-                // Очищаємо форму
+                
                 form.reset();
             });
         }

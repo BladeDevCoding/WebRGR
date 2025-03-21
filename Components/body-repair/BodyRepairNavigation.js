@@ -53,7 +53,7 @@ class BodyRepairNavigation extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Плавна прокрутка при кліку на посилання
+        
         const navLinks = this.querySelectorAll('.nav-item');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -71,7 +71,7 @@ class BodyRepairNavigation extends HTMLElement {
             });
         });
         
-        // Підсвічування активного розділу при прокрутці
+        
         window.addEventListener('scroll', () => this.highlightActiveSection());
         window.addEventListener('load', () => this.highlightActiveSection());
     }

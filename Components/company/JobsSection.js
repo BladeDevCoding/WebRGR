@@ -267,10 +267,10 @@ class JobsSection extends HTMLElement {
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.job-icon');
                     
-                    // Перемикаємо видимість контенту
+                    
                     content.classList.toggle('hidden');
                     
-                    // Обертаємо іконку
+                    
                     if (content.classList.contains('hidden')) {
                         icon.classList.remove('transform', 'rotate-180');
                     } else {
@@ -297,7 +297,7 @@ class JobsSection extends HTMLElement {
             
             if (!applyButtons.length || !modal || !closeModal || !applyForm) return;
             
-            // Відкриття модального вікна при кліку на кнопку "Відгукнутися"
+            
             applyButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const position = button.getAttribute('data-position');
@@ -307,7 +307,7 @@ class JobsSection extends HTMLElement {
                     modal.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
                     
-                    // Анімація появи модального вікна
+                    
                     setTimeout(() => {
                         modalContent.classList.remove('scale-95', 'opacity-0');
                         modalContent.classList.add('scale-100', 'opacity-100');
@@ -315,7 +315,7 @@ class JobsSection extends HTMLElement {
                 });
             });
             
-            // Закриття модального вікна
+            
             closeModal.addEventListener('click', () => {
                 modalContent.classList.remove('scale-100', 'opacity-100');
                 modalContent.classList.add('scale-95', 'opacity-0');
@@ -328,7 +328,7 @@ class JobsSection extends HTMLElement {
                 }, 300);
             });
             
-            // Відображення імені вибраного файлу
+            
             fileInput?.addEventListener('change', function() {
                 if (this.files.length > 0) {
                     fileName.textContent = this.files[0].name;
@@ -337,11 +337,11 @@ class JobsSection extends HTMLElement {
                 }
             });
             
-            // Обробка відправки форми
+            
             applyForm?.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = applyForm.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -351,7 +351,7 @@ class JobsSection extends HTMLElement {
                         isValid = false;
                         field.classList.add('border-red-500');
                         
-                        // Додаємо анімацію струшування для невалідних полів
+                        
                         field.classList.add('animate-shake');
                         setTimeout(() => {
                             field.classList.remove('animate-shake');
@@ -362,14 +362,14 @@ class JobsSection extends HTMLElement {
                 });
                 
                 if (isValid) {
-                    // Імітуємо відправку форми
+                    
                     const submitButton = applyForm.querySelector('button[type="submit"]');
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                     
-                    // Через 1.5 секунди закриваємо модальне вікно і показуємо toast
+                    
                     setTimeout(() => {
-                        // Закриваємо модальне вікно з формою
+                        
                         modalContent.classList.remove('scale-100', 'opacity-100');
                         modalContent.classList.add('scale-95', 'opacity-0');
                         
@@ -377,15 +377,15 @@ class JobsSection extends HTMLElement {
                             modal.classList.add('hidden');
                             document.body.style.overflow = 'auto';
                             
-                            // Показуємо toast-повідомлення
+                            
                             this.showToast(toast);
                             
-                            // Автоматично ховаємо toast через 5 секунд
+                            
                             setTimeout(() => {
                                 this.hideToast(toast);
                             }, 5000);
                             
-                            // Скидаємо форму
+                            
                             applyForm.reset();
                             fileName.textContent = 'Завантажити файл';
                             submitButton.disabled = false;
@@ -395,19 +395,19 @@ class JobsSection extends HTMLElement {
                 }
             });
             
-            // Закриття toast-повідомлення
+            
             closeToast?.addEventListener('click', () => {
                 this.hideToast(toast);
             });
             
-            // Закриття модального вікна при кліку поза ним
+            
             modal?.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     closeModal.click();
                 }
             });
             
-            // Закриття по клавіші Escape
+            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     if (!modal.classList.contains('hidden')) {
@@ -416,7 +416,7 @@ class JobsSection extends HTMLElement {
                 }
             });
             
-            // Додаємо стилі для анімації струшування
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

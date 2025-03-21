@@ -69,7 +69,7 @@ class TestDriveNavigation extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Плавна прокрутка
+        
         this.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -86,7 +86,7 @@ class TestDriveNavigation extends HTMLElement {
             });
         });
 
-        // Підсвічування активного пункту при прокрутці
+        
         window.addEventListener('scroll', () => this.highlightActiveSection());
     }
 

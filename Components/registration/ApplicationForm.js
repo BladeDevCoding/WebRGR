@@ -82,7 +82,7 @@ class ApplicationForm extends HTMLElement {
             
             if (!form || !toast) return;
             
-            // Закриття toast при кліку на кнопку закриття
+            
             closeToastBtn?.addEventListener('click', () => {
                 this.hideToast(toast);
             });
@@ -90,7 +90,7 @@ class ApplicationForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -99,7 +99,7 @@ class ApplicationForm extends HTMLElement {
                         isValid = false;
                         field.classList.add('border-red-500');
                         
-                        // Додаємо анімацію струшування для невалідних полів
+                        
                         field.classList.add('animate-shake');
                         setTimeout(() => {
                             field.classList.remove('animate-shake');
@@ -110,23 +110,23 @@ class ApplicationForm extends HTMLElement {
                 });
                 
                 if (isValid) {
-                    // Імітуємо відправку форми
+                    
                     const submitButton = form.querySelector('button[type="submit"]');
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправка...';
                     
                     setTimeout(() => {
-                        // Очищаємо форму
+                        
                         form.reset();
                         
-                        // Відновлюємо кнопку
+                        
                         submitButton.disabled = false;
                         submitButton.innerHTML = 'Відправити заявку';
                         
-                        // Показуємо повідомлення про успіх
+                        
                         this.showToast(toast);
                         
-                        // Автоматично ховаємо toast через 8 секунд
+                        
                         setTimeout(() => {
                             this.hideToast(toast);
                         }, 8000);
@@ -134,7 +134,7 @@ class ApplicationForm extends HTMLElement {
                 }
             });
             
-            // Додаємо стилі для анімації струшування
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

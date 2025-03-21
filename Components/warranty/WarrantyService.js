@@ -63,7 +63,7 @@ class WarrantyService extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Додаємо обробник для кнопки запису на сервіс
+        
         const bookingLink = this.querySelector('.service-booking-link');
         if (bookingLink) {
             bookingLink.addEventListener('click', (e) => {

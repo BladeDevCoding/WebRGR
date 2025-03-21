@@ -68,16 +68,16 @@ class NewsDetails extends HTMLElement {
                     
                     switch (platform) {
                         case 'facebook':
-                            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                            shareUrl = `https:
                             break;
                         case 'twitter':
-                            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                            shareUrl = `https:
                             break;
                         case 'linkedin':
-                            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                            shareUrl = `https:
                             break;
                         case 'telegram':
-                            shareUrl = `https://t.me/share/url?url=${url}&text=${title}`;
+                            shareUrl = `https:
                             break;
                     }
                     
@@ -87,7 +87,7 @@ class NewsDetails extends HTMLElement {
                 });
             });
             
-            // Копіювання посилання
+            
             const copyLinkBtn = this.querySelector('#copy-link');
             if (copyLinkBtn) {
                 copyLinkBtn.addEventListener('click', () => {

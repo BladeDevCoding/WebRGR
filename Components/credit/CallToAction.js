@@ -19,7 +19,7 @@ class CallToAction extends HTMLElement {
             </section>
         `;
 
-        // Додаємо плавну прокрутку для кнопки "Онлайн-консультація"
+        
         this.querySelector('a[href="#form-section"]').addEventListener('click', function(e) {
             e.preventDefault();
             const formSection = document.getElementById('form-section');

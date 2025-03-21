@@ -149,7 +149,7 @@ class CertificatesSection extends HTMLElement {
                 }
             });
             
-            // Закриття по клавіші Escape
+            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
                     lightbox.classList.add('hidden');

@@ -114,7 +114,7 @@ class AppointmentForm extends HTMLElement {
 
     setupFormValidation() {
         setTimeout(() => {
-            // Обробка форми
+            
             const appointmentForm = this.querySelector('#appointment-form');
             const successMessage = this.querySelector('#success-message');
             
@@ -123,7 +123,7 @@ class AppointmentForm extends HTMLElement {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Базова валідація
+                    
                     const requiredFields = form.querySelectorAll('[required]');
                     let isValid = true;
                     
@@ -138,7 +138,7 @@ class AppointmentForm extends HTMLElement {
                     
                     if (!isValid) return;
                     
-                    // Імітуємо успішну відправку
+                    
                     setTimeout(() => {
                         appointmentForm.classList.add('hidden');
                         successMessage.classList.remove('hidden');

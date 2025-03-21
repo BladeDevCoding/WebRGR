@@ -117,7 +117,7 @@ class ContactForm extends HTMLElement {
             
             if (!form || !toast) return;
             
-            // Закриття toast при кліку на кнопку закриття
+            
             closeToastBtn.addEventListener('click', () => {
                 this.hideToast(toast);
             });
@@ -125,7 +125,7 @@ class ContactForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -134,7 +134,7 @@ class ContactForm extends HTMLElement {
                         isValid = false;
                         field.classList.add('border-red-500');
                         
-                        // Додаємо анімацію струшування для невалідних полів
+                        
                         field.classList.add('animate-shake');
                         setTimeout(() => {
                             field.classList.remove('animate-shake');
@@ -145,19 +145,19 @@ class ContactForm extends HTMLElement {
                 });
                 
                 if (isValid) {
-                    // Імітуємо відправку форми (тут можна додати реальний AJAX запит)
+                    
                     const submitButton = form.querySelector('button[type="submit"]');
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                     
-                    // Через 1.5 секунди показуємо toast і скидаємо форму
+                    
                     setTimeout(() => {
                         form.reset();
                         submitButton.disabled = false;
                         submitButton.innerHTML = 'Відправити заявку';
                         this.showToast(toast);
                         
-                        // Автоматично ховаємо toast через 10 секунд
+                        
                         setTimeout(() => {
                             this.hideToast(toast);
                         }, 10000);
@@ -165,7 +165,7 @@ class ContactForm extends HTMLElement {
                 }
             });
             
-            // Додаємо стилі для анімації струшування
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

@@ -8,7 +8,7 @@ class OfferDetails extends HTMLElement {
 
     async connectedCallback() {
         try {
-            // Отримуємо ID пропозиції з URL
+            
             const urlParams = new URLSearchParams(window.location.search);
             const offerId = urlParams.get('id');
             
@@ -17,7 +17,7 @@ class OfferDetails extends HTMLElement {
                 return;
             }
             
-            // Завантажуємо деталі пропозиції
+            
             this.offer = await getOfferDetails(offerId);
             
             if (!this.offer) {

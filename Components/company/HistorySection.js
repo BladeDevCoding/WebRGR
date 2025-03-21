@@ -144,7 +144,7 @@ class HistorySection extends HTMLElement {
             
             timelineItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    // Оновлюємо активний елемент часової шкали
+                    
                     timelineItems.forEach(i => {
                         i.classList.remove('active');
                         const circle = i.querySelector('div:first-child');
@@ -157,7 +157,7 @@ class HistorySection extends HTMLElement {
                     circle.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
                     circle.classList.add('bg-indigo-600', 'text-white');
                     
-                    // Показуємо відповідний контент
+                    
                     const year = item.getAttribute('data-year');
                     const contents = this.querySelectorAll('.history-content');
                     
@@ -169,7 +169,7 @@ class HistorySection extends HTMLElement {
                     if (activeContent) {
                         activeContent.classList.remove('hidden');
                         
-                        // Додаємо анімацію появи
+                        
                         activeContent.classList.add('animate-fade-in');
                         setTimeout(() => {
                             activeContent.classList.remove('animate-fade-in');
@@ -178,7 +178,7 @@ class HistorySection extends HTMLElement {
                 });
             });
             
-            // Додаємо стилі для анімації
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes fadeIn {

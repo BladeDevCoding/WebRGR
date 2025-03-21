@@ -1,8 +1,8 @@
-// Додаємо стилі для темної теми
+
 (function addThemeStyles() {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
-        /* Базові стилі для темної теми */
+        
         :root {
             --text-color: #111827;
             --bg-color: #ffffff;
@@ -17,13 +17,13 @@
             --border-color: #374151;
         }
 
-        /* Застосування змінних */
+        
         body {
             color: var(--text-color);
             background-color: var(--bg-color);
         }
 
-        /* Додаткові стилі для темної теми */
+        
         .dark body {
             background-color: #111827;
             color: white;
@@ -41,12 +41,12 @@
             border-color: #374151 !important;
         }
 
-        /* Інші стилі */
+        
         * {
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
-        /* Стилі для скролбару */
+        
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -72,28 +72,28 @@
     document.head.appendChild(styleElement);
 })();
 
-// Налаштування Tailwind для темної теми
+
 if (typeof tailwind !== 'undefined') {
     tailwind.config = {
         darkMode: 'class',
         theme: {
             extend: {
                 colors: {
-                    // Можна додати кастомні кольори якщо потрібно
+                    
                 }
             }
         }
     };
 }
 
-// Глобальна функція для перемикання теми
+
 function toggleTheme() {
     try {
-        // Отримуємо елемент html
+        
         const html = document.documentElement;
         const isDark = html.classList.contains('dark');
         
-        // Перемикаємо тему
+        
         if (isDark) {
             html.classList.remove('dark');
             localStorage.setItem('theme', 'light');
@@ -102,14 +102,14 @@ function toggleTheme() {
             localStorage.setItem('theme', 'dark');
         }
         
-        // Оновлюємо іконки
+        
         updateThemeIcons();
     } catch (error) {
         console.error("Помилка при зміні теми:", error);
     }
 }
 
-// Функція для оновлення іконок
+
 function updateThemeIcons() {
     try {
         const isDark = document.documentElement.classList.contains('dark');
@@ -127,31 +127,31 @@ function updateThemeIcons() {
     }
 }
 
-// Функція для ініціалізації обробників подій
+
 function initThemeHandlers() {
     try {
-        // Знаходимо всі кнопки теми
+        
         const themeButtons = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
         
-        // Додаємо обробники для кожної кнопки
+        
         themeButtons.forEach((button, index) => {
-            // Видаляємо всі існуючі обробники
+            
             const newButton = button.cloneNode(true);
             if (button.parentNode) {
                 button.parentNode.replaceChild(newButton, button);
             }
             
-            // Додаємо новий обробник
+            
             newButton.addEventListener('click', function(event) {
                 toggleTheme();
                 event.preventDefault();
             });
             
-            // Додаємо атрибут для відлагодження
+            
             newButton.setAttribute('data-theme-button', index + 1);
         });
         
-        // Додаємо глобальний обробник як запасний варіант
+        
         document.addEventListener('click', function(event) {
             const target = event.target.closest('#theme-toggle, #mobile-theme-toggle');
             if (target) {
@@ -164,10 +164,10 @@ function initThemeHandlers() {
     }
 }
 
-// Ініціалізація теми при завантаженні сторінки
+
 document.addEventListener('DOMContentLoaded', function() {
     try {
-        // Встановлюємо початкову тему
+        
         const savedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
@@ -177,19 +177,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.documentElement.classList.remove('dark');
         }
         
-        // Оновлюємо іконки
+        
         updateThemeIcons();
         
-        // Ініціалізуємо обробники подій з затримкою
+        
         setTimeout(initThemeHandlers, 500);
     } catch (error) {
         console.error("Помилка при ініціалізації теми:", error);
     }
 });
 
-// Додаємо обробник для змін у медіа-запиті
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    // Якщо немає збереженої теми, застосовуємо системну
+    
     if (!localStorage.getItem('theme')) {
         if (event.matches) {
             document.documentElement.classList.add('dark');
@@ -200,6 +200,6 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
     }
 });
 
-// Експортуємо функції для глобального доступу
+
 window.toggleTheme = toggleTheme;
 window.updateThemeIcons = updateThemeIcons; 

@@ -36,14 +36,14 @@ class SeasonalService {
             const offers = await this.getAllSeasonalOffers();
             const currentMonth = new Date().getMonth();
             
-            // Визначаємо поточний сезон
+            
             let season;
             if (currentMonth >= 11 || currentMonth <= 1) season = 'winter';
             else if (currentMonth >= 2 && currentMonth <= 4) season = 'spring';
             else if (currentMonth >= 5 && currentMonth <= 7) season = 'summer';
             else season = 'autumn';
             
-            // Знаходимо відповідну пропозицію
+            
             return offers.find(offer => offer.slug.includes(season));
         } catch (error) {
             console.error('Error loading current season offer:', error);

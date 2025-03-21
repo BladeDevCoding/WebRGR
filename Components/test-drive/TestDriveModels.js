@@ -23,7 +23,7 @@ class TestDriveModels extends HTMLElement {
                 status: "available",
                 trim: "Premium"
             }
-            // Можна додати інші моделі...
+            
         ];
     }
 

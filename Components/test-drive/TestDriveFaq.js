@@ -57,7 +57,7 @@ class TestDriveFaq extends HTMLElement {
     setupEventListeners() {
         this.querySelectorAll('[data-faq-toggle]').forEach(button => {
             button.addEventListener('click', () => {
-                // Закриваємо всі відкриті FAQ
+                
                 const allFAQContents = this.querySelectorAll('.p-4.bg-white');
                 const allFAQArrows = this.querySelectorAll('svg');
                 
@@ -73,7 +73,7 @@ class TestDriveFaq extends HTMLElement {
                     }
                 });
                 
-                // Перемикаємо поточний FAQ
+                
                 const content = button.nextElementSibling;
                 const arrow = button.querySelector('svg');
                 

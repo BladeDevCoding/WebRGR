@@ -57,7 +57,7 @@ class MaintenanceNavigation extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Плавна прокрутка при кліку на посилання
+        
         this.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -75,7 +75,7 @@ class MaintenanceNavigation extends HTMLElement {
             });
         });
         
-        // Обробка вибору в мобільному селекті
+        
         const mobileNav = this.querySelector('#mobile-nav');
         if (mobileNav) {
             mobileNav.addEventListener('change', function() {
@@ -93,7 +93,7 @@ class MaintenanceNavigation extends HTMLElement {
             });
         }
         
-        // Підсвічування активного розділу при прокрутці
+        
         window.addEventListener('scroll', () => this.highlightActiveSection());
         window.addEventListener('load', () => this.highlightActiveSection());
     }
@@ -124,7 +124,7 @@ class MaintenanceNavigation extends HTMLElement {
             }
         });
         
-        // Оновлення мобільного селекта
+        
         const mobileNav = this.querySelector('#mobile-nav');
         if (mobileNav && currentSection) {
             mobileNav.value = currentSection.getAttribute('id');

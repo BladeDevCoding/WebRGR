@@ -92,7 +92,7 @@ class RegistrationForm extends HTMLElement {
             
             if (!form || !toast) return;
             
-            // Закриття toast при кліку на кнопку закриття
+            
             closeToastBtn?.addEventListener('click', () => {
                 this.hideToast(toast);
             });
@@ -100,7 +100,7 @@ class RegistrationForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -109,7 +109,7 @@ class RegistrationForm extends HTMLElement {
                         isValid = false;
                         field.classList.add('border-red-500');
                         
-                        // Додаємо анімацію струшування для невалідних полів
+                        
                         field.classList.add('animate-shake');
                         setTimeout(() => {
                             field.classList.remove('animate-shake');
@@ -120,19 +120,19 @@ class RegistrationForm extends HTMLElement {
                 });
                 
                 if (isValid) {
-                    // Імітуємо відправку форми
+                    
                     const submitButton = form.querySelector('button[type="submit"]');
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                     
-                    // Через 1.5 секунди показуємо toast і скидаємо форму
+                    
                     setTimeout(() => {
                         form.reset();
                         submitButton.disabled = false;
                         submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Відправити заявку';
                         this.showToast(toast);
                         
-                        // Автоматично ховаємо toast через 8 секунд
+                        
                         setTimeout(() => {
                             this.hideToast(toast);
                         }, 8000);
@@ -140,7 +140,7 @@ class RegistrationForm extends HTMLElement {
                 }
             });
             
-            // Додаємо стилі для анімації струшування
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

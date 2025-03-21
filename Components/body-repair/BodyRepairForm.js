@@ -83,7 +83,7 @@ class BodyRepairForm extends HTMLElement {
             
             if (!form || !toast) return;
             
-            // Закриття toast при кліку на кнопку закриття
+            
             closeToastBtn?.addEventListener('click', () => {
                 this.hideToast(toast);
             });
@@ -91,7 +91,7 @@ class BodyRepairForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -100,7 +100,7 @@ class BodyRepairForm extends HTMLElement {
                         isValid = false;
                         field.classList.add('border-red-500');
                         
-                        // Додаємо анімацію струшування для невалідних полів
+                        
                         field.classList.add('animate-shake');
                         setTimeout(() => {
                             field.classList.remove('animate-shake');
@@ -112,30 +112,30 @@ class BodyRepairForm extends HTMLElement {
                 
                 if (!isValid) return;
                 
-                // Імітуємо відправку форми
+                
                 const submitButton = form.querySelector('button[type="submit"]');
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                 
                 setTimeout(() => {
-                    // Очищаємо форму
+                    
                     form.reset();
                     
-                    // Показуємо повідомлення про успіх
+                    
                     this.showToast(toast);
                     
-                    // Ховаємо повідомлення через 5 секунд
+                    
                     setTimeout(() => {
                         this.hideToast(toast);
                     }, 5000);
                     
-                    // Відновлюємо кнопку
+                    
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Відправити заявку';
                 }, 1500);
             });
             
-            // Додаємо стилі для анімації
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes shake {

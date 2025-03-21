@@ -4,7 +4,7 @@ class CarsCatalogGrid extends HTMLElement {
         this.cars = [];
         this.filteredCars = [];
         this.filters = {};
-        this.sortOption = 'price-asc'; // За замовчуванням сортуємо за зростанням ціни
+        this.sortOption = 'price-asc'; 
     }
 
     async connectedCallback() {
@@ -57,7 +57,7 @@ class CarsCatalogGrid extends HTMLElement {
             </div>
         `;
         
-        // Додаємо обробник для кнопки скидання фільтрів
+        
         const resetBtn = this.querySelector('#reset-search');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
@@ -80,17 +80,17 @@ class CarsCatalogGrid extends HTMLElement {
     applyFilters() {
         console.log('Застосування фільтрів:', this.filters);
         this.filteredCars = this.cars.filter(car => {
-            // Фільтр за брендом
+            
             if (this.filters.brand && car.brand !== this.filters.brand) {
                 return false;
             }
             
-            // Фільтр за моделлю
+            
             if (this.filters.model && car.model !== this.filters.model) {
                 return false;
             }
             
-            // Фільтр за ціною
+            
             if (this.filters.price) {
                 const priceStr = car.price?.replace(/\s+/g, '').replace(/[^\d]/g, '') || '0';
                 const price = parseInt(priceStr);
@@ -104,7 +104,7 @@ class CarsCatalogGrid extends HTMLElement {
                 }
             }
             
-            // Фільтр за роком
+            
             if (this.filters.year) {
                 const year = parseInt(car.year) || 0;
                 
@@ -117,7 +117,7 @@ class CarsCatalogGrid extends HTMLElement {
                 }
             }
             
-            // Фільтр за потужністю двигуна
+            
             if (this.filters.power) {
                 const powerMatch = car.enginePower?.match(/(\d+)/);
                 const power = powerMatch ? parseInt(powerMatch[1]) : 0;
@@ -131,21 +131,21 @@ class CarsCatalogGrid extends HTMLElement {
                 }
             }
             
-            // Фільтр за типом палива
+            
             if (this.filters.fuel && this.filters.fuel.length) {
                 if (!car.fuel || !this.filters.fuel.includes(car.fuel)) {
                     return false;
                 }
             }
             
-            // Фільтр за типом трансмісії
+            
             if (this.filters.transmission && this.filters.transmission.length) {
                 if (!car.transmission || !this.filters.transmission.includes(car.transmission)) {
                     return false;
                 }
             }
             
-            // Фільтр за типом приводу
+            
             if (this.filters.drive && this.filters.drive.length) {
                 if (!car.drive || !this.filters.drive.includes(car.drive)) {
                     return false;
@@ -181,7 +181,7 @@ class CarsCatalogGrid extends HTMLElement {
                 this.filteredCars.sort((a, b) => (a.year || 0) - (b.year || 0));
                 break;
             default:
-                // За замовчуванням сортуємо за зростанням ціни
+                
                 this.filteredCars.sort((a, b) => {
                     const priceA = parseInt(a.price.replace(/\s+/g, '').replace(/[^\d]/g, '')) || 0;
                     const priceB = parseInt(b.price.replace(/\s+/g, '').replace(/[^\d]/g, '')) || 0;
@@ -191,7 +191,7 @@ class CarsCatalogGrid extends HTMLElement {
     }
 
     renderCarCard(car) {
-        // Отримуємо дані автомобіля
+        
         const { 
             brand, model, year, title, configuration, 
             mileage, engine, fuel, transmission, drive, 
@@ -199,21 +199,21 @@ class CarsCatalogGrid extends HTMLElement {
             priceUSD, priceEUR, enginePower, acceleration, maxSpeed 
         } = car;
         
-        // Форматуємо заголовок
+        
         const cardTitle = title || `${brand} ${model}`;
         
-        // Форматуємо ціни
+        
         const currentPrice = price || 'Ціна за запитом';
         const formattedOldPrice = oldPrice || '';
         const discountBadge = discount ? `<span class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded-md text-sm">${discount}</span>` : '';
         
-        // Форматуємо пробіг
+        
         const formattedMileage = mileage && parseInt(mileage) > 0 ? `${mileage} км` : 'Новий';
         
-        // Форматуємо конфігурацію
+        
         const formattedConfig = configuration ? configuration.replace(/_/g, ' ') : '';
         
-        // Перевіряємо наявність зображення
+        
         const imageUrl = image || 'https://via.placeholder.com/400x300?text=Немає+фото';
         
         return `

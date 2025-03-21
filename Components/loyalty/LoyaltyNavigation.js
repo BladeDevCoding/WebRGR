@@ -96,7 +96,7 @@ class LoyaltyNavigation extends HTMLElement {
         window.addEventListener('scroll', () => this.highlightActiveSection());
         window.addEventListener('load', () => this.highlightActiveSection());
         
-        // Плавна прокрутка при кліку
+        
         this.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();

@@ -87,7 +87,7 @@ class DiagnosticsForm extends HTMLElement {
     }
 
     setupFormValidation() {
-        // Implementation of form validation logic
+        
         const form = this.querySelector('#diagnostics-form');
         const requiredFields = form.querySelectorAll('[required]');
         
@@ -111,7 +111,7 @@ class DiagnosticsForm extends HTMLElement {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Validate form
+            
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
             
@@ -125,13 +125,13 @@ class DiagnosticsForm extends HTMLElement {
             });
             
             if (isValid) {
-                // Show toast notification
+                
                 toast.classList.remove('hidden');
                 setTimeout(() => {
                     toast.classList.remove('translate-y-20', 'opacity-0');
                 }, 100);
                 
-                // Hide toast after 5 seconds
+                
                 setTimeout(() => {
                     toast.classList.add('translate-y-20', 'opacity-0');
                     setTimeout(() => {
@@ -139,11 +139,11 @@ class DiagnosticsForm extends HTMLElement {
                     }, 300);
                 }, 5000);
                 
-                // Reset form
+                
                 form.reset();
                 
-                // Here you would typically send the form data to a server
-                // For demonstration purposes, we're just showing the toast
+                
+                
             }
         });
     }

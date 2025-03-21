@@ -11,14 +11,14 @@ class CurrentOffers extends HTMLElement {
         try {
             console.log('Trying to fetch offers...');
             
-            // Спроба завантажити дані
+            
             try {
                 this.offers = await getOffers();
                 console.log('Offers received:', this.offers);
             } catch (e) {
                 console.error('Failed to load offers, using fallback data:', e);
                 
-                // Резервні тестові дані, якщо завантаження не вдалося
+                
                 this.offers = [
                     {
                         id: 1,

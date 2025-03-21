@@ -85,9 +85,9 @@ class EquipmentForm extends HTMLElement {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Тут буде код для відправки даних на сервер
                 
-                // Імітуємо успішну відправку
+                
+                
                 setTimeout(() => {
                     repairForm.classList.add('hidden');
                     successMessage.classList.remove('hidden');

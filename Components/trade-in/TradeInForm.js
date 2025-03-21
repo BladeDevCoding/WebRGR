@@ -102,7 +102,7 @@ class TradeInForm extends HTMLElement {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Базова валідація
+                
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
                 
@@ -116,19 +116,19 @@ class TradeInForm extends HTMLElement {
                 });
                 
                 if (isValid) {
-                    // Імітуємо відправку форми
+                    
                     const submitButton = form.querySelector('button[type="submit"]');
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Відправляємо...';
                     
-                    // Через 1.5 секунди показуємо toast і скидаємо форму
+                    
                     setTimeout(() => {
                         form.reset();
                         submitButton.disabled = false;
                         submitButton.innerHTML = 'Відправити заявку';
                         this.showToast(toast);
                         
-                        // Автоматично ховаємо toast через 5 секунд
+                        
                         setTimeout(() => {
                             this.hideToast(toast);
                         }, 5000);
@@ -136,7 +136,7 @@ class TradeInForm extends HTMLElement {
                 }
             });
             
-            // Закриття toast при кліку на кнопку закриття
+            
             const closeToastBtn = toast.querySelector('button[data-dismiss-target="#toast-success"]');
             closeToastBtn?.addEventListener('click', () => {
                 this.hideToast(toast);

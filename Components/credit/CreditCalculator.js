@@ -117,7 +117,7 @@ class CreditCalculator extends HTMLElement {
 
     setupEventListeners() {
         setTimeout(() => {
-            // Отримуємо всі елементи керування
+            
             const creditProgram = this.querySelector('#credit-program');
             const carPrice = this.querySelector('#car-price');
             const carPriceRange = this.querySelector('#car-price-range');
@@ -126,12 +126,12 @@ class CreditCalculator extends HTMLElement {
             const loanTerm = this.querySelector('#loan-term');
             const loanTermRange = this.querySelector('#loan-term-range');
             
-            // Синхронізуємо поля введення з повзунками
+            
             this.syncInputWithRange(carPrice, carPriceRange, true);
             this.syncInputWithRange(downPayment, downPaymentRange, true);
             this.syncInputWithRange(loanTerm, loanTermRange, true);
             
-            // Додаємо обробники подій для всіх елементів керування
+            
             creditProgram.addEventListener('change', () => this.calculateLoan());
             
             carPrice.addEventListener('input', () => this.calculateLoan());
@@ -143,7 +143,7 @@ class CreditCalculator extends HTMLElement {
             loanTerm.addEventListener('input', () => this.calculateLoan());
             loanTermRange.addEventListener('input', () => this.calculateLoan());
             
-            // Початковий розрахунок
+            
             this.calculateLoan();
         }, 0);
     }
@@ -181,7 +181,7 @@ class CreditCalculator extends HTMLElement {
         const totalPayment = monthlyPayment * loanTermMonths;
         const overpayment = totalPayment - loanAmount;
         
-        // Анімуємо зміну значень
+        
         this.animateValueChange('#loan-amount', Math.round(loanAmount).toLocaleString() + ' грн');
         this.animateValueChange('#interest-rate-display', interestRate + '%');
         this.animateValueChange('#monthly-payment', Math.round(monthlyPayment).toLocaleString() + ' грн');
@@ -193,7 +193,7 @@ class CreditCalculator extends HTMLElement {
         const element = this.querySelector(selector);
         if (!element) return;
         
-        // Додаємо невелику анімацію при зміні значення
+        
         element.style.transform = 'scale(1.05)';
         element.style.transition = 'transform 0.2s ease';
         

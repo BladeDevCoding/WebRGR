@@ -71,12 +71,12 @@ class AllNews extends HTMLElement {
     setupFilters() {
         const filterButtons = document.querySelectorAll('[data-filter]');
         
-        // Фільтрація за категоріями
+        
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const filter = button.dataset.filter;
                 
-                // Оновлюємо стилі кнопок
+                
                 filterButtons.forEach(btn => {
                     btn.classList.remove('bg-indigo-600', 'text-white');
                     btn.classList.add('bg-gray-100', 'dark:bg-gray-700');
@@ -84,29 +84,29 @@ class AllNews extends HTMLElement {
                 button.classList.remove('bg-gray-100', 'dark:bg-gray-700');
                 button.classList.add('bg-indigo-600', 'text-white');
                 
-                // Фільтруємо новини
+                
                 this.currentFilter = filter;
                 this.filterNews();
             });
         });
         
-        // Фільтрація за тегами
+        
         setTimeout(() => {
             const tagButtons = this.querySelectorAll('[data-tag]');
             tagButtons.forEach(tag => {
                 tag.addEventListener('click', () => {
                     const tagName = tag.dataset.tag;
                     
-                    // Скидаємо стилі кнопок категорій
+                    
                     filterButtons.forEach(btn => {
                         btn.classList.remove('bg-indigo-600', 'text-white');
                         btn.classList.add('bg-gray-100', 'dark:bg-gray-700');
                     });
                     
-                    // Фільтруємо за тегом
+                    
                     this.filteredNews = this.allNews.filter(news => news.tags.includes(tagName));
                     this.render();
-                    this.setupFilters(); // Повторно встановлюємо обробники подій
+                    this.setupFilters(); 
                 });
             });
         }, 0);

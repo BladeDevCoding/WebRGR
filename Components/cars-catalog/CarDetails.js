@@ -4,30 +4,30 @@ class CarDetails extends HTMLElement {
         this.car = null;
         this.isLoading = true;
         this.error = null;
-        this.activeModal = null; // Для відстеження активного модального вікна
+        this.activeModal = null; 
         this.creditAmount = 0;
         this.creditDownPayment = 0;
-        this.creditTerm = 60; // 5 років за замовчуванням
-        this.creditRate = 12.9; // Фіксована ставка
+        this.creditTerm = 60; 
+        this.creditRate = 12.9; 
         this.monthlyPayment = 0;
-        this.toastTimeout = null; // Для відстеження таймера toast-повідомлення
+        this.toastTimeout = null; 
     }
 
     async connectedCallback() {
-        this.render(); // Показуємо завантажувач
+        this.render(); 
         await this.loadCarDetails();
-        this.render(); // Оновлюємо з даними
+        this.render(); 
         if (this.car) {
             this.initializeSwiper();
             this.setupEventListeners();
-            this.calculateCredit(); // Розраховуємо кредит одразу
-            this.updateCreditUI(); // Оновлюємо UI кредитного калькулятора
+            this.calculateCredit(); 
+            this.updateCreditUI(); 
         }
     }
 
     async loadCarDetails() {
         try {
-            // Отримуємо slug з URL
+            
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
             
@@ -35,10 +35,10 @@ class CarDetails extends HTMLElement {
                 throw new Error('Не вказано ідентифікатор автомобіля');
             }
             
-            // Завантажуємо всі автомобілі
+            
             const cars = await window.carsService.getCars();
             
-            // Знаходимо потрібний автомобіль за slug
+            
             const car = cars.find(car => car.slug === slug);
             
             if (!car) {
@@ -48,13 +48,13 @@ class CarDetails extends HTMLElement {
             this.car = car;
             this.isLoading = false;
             
-            // Встановлюємо заголовок сторінки
+            
             document.title = `${car.title || `${car.brand} ${car.model}`} | AutoPrime`;
             
-            // Встановлюємо початкову суму кредиту
+            
             const priceStr = car.price?.replace(/\s+/g, '').replace(/[^\d]/g, '') || '0';
             this.creditAmount = parseInt(priceStr);
-            this.creditDownPayment = Math.round(this.creditAmount * 0.2); // 20% початковий внесок
+            this.creditDownPayment = Math.round(this.creditAmount * 0.2); 
             
         } catch (error) {
             console.error('Помилка при завантаженні деталей автомобіля:', error);
@@ -64,19 +64,19 @@ class CarDetails extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Обробник для форми зв'язку з менеджером
+        
         const contactForm = this.querySelector('#contact-form-element');
         if (contactForm) {
             contactForm.addEventListener('submit', this.handleFormSubmit.bind(this));
         }
         
-        // Обробник для кнопки "Поділитися"
+        
         const shareButton = this.querySelector('#share-button');
         if (shareButton) {
             shareButton.addEventListener('click', this.handleShare.bind(this));
         }
         
-        // Обробники для модальних вікон
+        
         const creditButton = this.querySelector('#credit-button');
         if (creditButton) {
             creditButton.addEventListener('click', () => this.openModal('credit'));
@@ -87,13 +87,13 @@ class CarDetails extends HTMLElement {
             testDriveButton.addEventListener('click', () => this.openModal('test-drive'));
         }
         
-        // Обробники для закриття модальних вікон
+        
         const closeButtons = this.querySelectorAll('.modal-close');
         closeButtons.forEach(button => {
             button.addEventListener('click', () => this.closeModal());
         });
         
-        // Закриття модального вікна при кліку на фон
+        
         const modals = this.querySelectorAll('.modal-overlay');
         modals.forEach(modal => {
             modal.addEventListener('click', (e) => {
@@ -103,7 +103,7 @@ class CarDetails extends HTMLElement {
             });
         });
         
-        // Обробники для форми тест-драйву
+        
         const testDriveForm = this.querySelector('#test-drive-form');
         if (testDriveForm) {
             testDriveForm.addEventListener('submit', (e) => {
@@ -188,7 +188,7 @@ class CarDetails extends HTMLElement {
             return;
         }
         
-        // Отримуємо дані автомобіля
+        
         const { 
             brand, model, year, title, configuration, 
             mileage, engine, fuel, transmission, drive, 
@@ -196,18 +196,18 @@ class CarDetails extends HTMLElement {
             priceUSD, priceEUR, enginePower, acceleration, maxSpeed 
         } = this.car;
         
-        // Форматуємо заголовок
+        
         const carTitle = title || `${brand} ${model}`;
         
-        // Форматуємо ціни
+        
         const currentPrice = price || 'Ціна за запитом';
         const formattedOldPrice = oldPrice ? `<span class="line-through text-gray-500 dark:text-gray-400">${oldPrice}</span>` : '';
         const discountBadge = discount ? `<span class="ml-2 bg-red-600 text-white px-2 py-1 rounded-md text-sm">${discount}</span>` : '';
         
-        // Форматуємо пробіг
+        
         const formattedMileage = mileage && parseInt(mileage) > 0 ? `${mileage} км` : 'Новий';
         
-        // Форматуємо конфігурацію
+        
         const formattedConfig = configuration ? configuration.replace(/_/g, ' ') : '';
         
         this.innerHTML = `
@@ -491,19 +491,19 @@ class CarDetails extends HTMLElement {
     }
 
     calculateCredit() {
-        // Розрахунок кредиту за формулою аннуїтетного платежу
+        
         const loanAmount = this.creditAmount - this.creditDownPayment;
         const monthlyRate = this.creditRate / 100 / 12;
         const termInMonths = this.creditTerm;
         
-        // Формула аннуїтетного платежу: P = (PV * r * (1 + r)^n) / ((1 + r)^n - 1)
-        // де P - щомісячний платіж, PV - сума кредиту, r - місячна ставка, n - кількість місяців
+        
+        
         const numerator = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, termInMonths);
         const denominator = Math.pow(1 + monthlyRate, termInMonths) - 1;
         
         this.monthlyPayment = Math.round(numerator / denominator);
         
-        // Перевірка на коректність розрахунку
+        
         if (isNaN(this.monthlyPayment) || !isFinite(this.monthlyPayment) || this.monthlyPayment < 0) {
             this.monthlyPayment = 0;
         }
@@ -523,18 +523,18 @@ class CarDetails extends HTMLElement {
     }
 
     showToast(message) {
-        // Видаляємо попередній toast, якщо він є
+        
         const existingToast = document.querySelector('.toast-notification');
         if (existingToast) {
             existingToast.remove();
         }
         
-        // Очищаємо попередній таймер
+        
         if (this.toastTimeout) {
             clearTimeout(this.toastTimeout);
         }
         
-        // Створюємо новий toast
+        
         const toast = document.createElement('div');
         toast.className = 'toast-notification fixed bottom-4 right-4 bg-indigo-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 animate-fade-in';
         toast.innerHTML = `
@@ -544,10 +544,10 @@ class CarDetails extends HTMLElement {
             </div>
         `;
         
-        // Додаємо toast до body
+        
         document.body.appendChild(toast);
         
-        // Встановлюємо таймер для видалення toast
+        
         this.toastTimeout = setTimeout(() => {
             toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
             setTimeout(() => toast.remove(), 300);
@@ -555,7 +555,7 @@ class CarDetails extends HTMLElement {
     }
 
     initializeSwiper() {
-        // Ініціалізуємо головний слайдер
+        
         const mainSwiper = new Swiper('.main-swiper', {
             loop: true,
             autoplay: {

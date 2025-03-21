@@ -1,11 +1,9 @@
-/**
- * Сервіс для роботи з даними автомобілів
- */
+
 window.carsService = {
-    // Отримання списку всіх автомобілів
+    
     async getCars() {
         try {
-            // Завантажуємо дані з JSON файлу
+            
             const response = await fetch('../fs/data/cars/cars_database_2.json');
             
             if (!response.ok) {
@@ -14,17 +12,17 @@ window.carsService = {
             
             const data = await response.json();
             
-            // Отримуємо дані автомобілів з правильного шляху в JSON
+            
             const cars = data["fs/images/cars"] || [];
             
-            // Перетворюємо дані з JSON у потрібний формат
+            
             return cars.map(car => ({
                 brand: car.brand,
                 model: car.model,
                 year: car.year,
                 title: car.title,
                 configuration: car.configuration,
-                mileage: "0", // Нові автомобілі
+                mileage: "0", 
                 engine: this.extractEngineCapacity(car),
                 fuel: this.extractFuelType(car),
                 transmission: this.extractTransmission(car),
@@ -32,14 +30,14 @@ window.carsService = {
                 price: car.price?.current_price_uah || "",
                 oldPrice: car.price?.old_price || "",
                 discount: car.price?.discount || "",
-                image: `../${car.images.main}`, // Шлях до головного зображення
+                image: `../${car.images.main}`, 
                 slug: car.slug,
-                // Додаткові дані
+                
                 gallery: car.images.gallery.map(img => `../${img}`),
                 specifications: car.specifications,
                 priceUSD: car.price?.price_usd || "",
                 priceEUR: car.price?.price_eur || "",
-                // Додаткові характеристики для відображення
+                
                 enginePower: this.extractEnginePower(car),
                 acceleration: this.extractAcceleration(car),
                 maxSpeed: this.extractMaxSpeed(car),
@@ -54,11 +52,11 @@ window.carsService = {
         }
     },
 
-    // Допоміжні методи для отримання даних з JSON
+    
     extractEngineCapacity(car) {
         if (!car.specifications?.engine?.capacity) return "";
         
-        // Отримуємо об'єм двигуна (тільки число)
+        
         const capacity = car.specifications.engine.capacity.split(' ')[0];
         return capacity;
     },
@@ -92,7 +90,7 @@ window.carsService = {
         return car.specifications.engine.fuel_consumption.mixed;
     },
 
-    // Отримання списку унікальних брендів
+    
     async getBrands() {
         try {
             const response = await fetch('../fs/data/cars/cars_database_2.json');
@@ -103,12 +101,12 @@ window.carsService = {
             
             const data = await response.json();
             
-            // Використовуємо готовий список брендів з метаданих
+            
             if (data.metadata && data.metadata.brands) {
                 return data.metadata.brands.sort();
             }
             
-            // Якщо метаданих немає, отримуємо з списку автомобілів
+            
             const cars = data["fs/images/cars"] || [];
             const brands = [...new Set(cars.map(car => car.brand))];
             return brands.sort();
@@ -118,7 +116,7 @@ window.carsService = {
         }
     },
     
-    // Отримання списку моделей для конкретного бренду
+    
     async getModelsByBrand(brand) {
         try {
             const response = await fetch('../fs/data/cars/cars_database_2.json');
@@ -140,13 +138,13 @@ window.carsService = {
         }
     },
     
-    // Отримання списку типів палива
+    
     async getFuelTypes() {
         try {
             const cars = await this.getCars();
             const fuelTypes = [...new Set(cars
                 .map(car => car.fuel)
-                .filter(fuel => fuel)) // Видаляємо пусті значення
+                .filter(fuel => fuel)) 
             ];
             return fuelTypes.sort();
         } catch (error) {
@@ -155,13 +153,13 @@ window.carsService = {
         }
     },
     
-    // Отримання списку типів трансмісії
+    
     async getTransmissionTypes() {
         try {
             const cars = await this.getCars();
             const transmissionTypes = [...new Set(cars
                 .map(car => car.transmission)
-                .filter(transmission => transmission)) // Видаляємо пусті значення
+                .filter(transmission => transmission)) 
             ];
             return transmissionTypes.sort();
         } catch (error) {
@@ -170,13 +168,13 @@ window.carsService = {
         }
     },
     
-    // Отримання списку типів приводу
+    
     async getDriveTypes() {
         try {
             const cars = await this.getCars();
             const driveTypes = [...new Set(cars
                 .map(car => car.drive)
-                .filter(drive => drive)) // Видаляємо пусті значення
+                .filter(drive => drive)) 
             ];
             return driveTypes.sort();
         } catch (error) {
@@ -185,7 +183,7 @@ window.carsService = {
         }
     },
     
-    // Отримання цінових діапазонів
+    
     async getPriceRanges() {
         return [
             { label: "до 500 000 грн", value: "0-500000" },
@@ -197,7 +195,7 @@ window.carsService = {
         ];
     },
     
-    // Отримання діапазонів років
+    
     async getYearRanges() {
         const currentYear = new Date().getFullYear();
         return [
@@ -210,7 +208,7 @@ window.carsService = {
         ];
     },
     
-    // Отримання діапазонів потужності двигуна
+    
     async getEnginePowerRanges() {
         return [
             { label: "до 100 к.с.", value: "0-100" },

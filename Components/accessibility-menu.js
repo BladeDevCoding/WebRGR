@@ -22,7 +22,7 @@ class AccessibilityMenu extends HTMLElement {
     addStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            /* Базові стилі для всіх екранів */
+            
             .a11y-panel {
                 position: fixed;
                 left: 0;
@@ -150,7 +150,7 @@ class AccessibilityMenu extends HTMLElement {
                 transition: all 0.2s ease;
             }
 
-            /* Десктопна версія */
+            
             @media (min-width: 769px) {
                 .a11y-panel {
                     top: 56px;
@@ -169,7 +169,7 @@ class AccessibilityMenu extends HTMLElement {
                 }
             }
 
-            /* Мобільна версія */
+            
             @media (max-width: 768px) {
                 .a11y-panel {
                     top: 56px;
@@ -214,7 +214,7 @@ class AccessibilityMenu extends HTMLElement {
                 }
             }
 
-            /* Інтерактивність */
+            
             .a11y-toggle:hover,
             .a11y-controls button:hover,
             .a11y-reset:hover {
@@ -236,7 +236,7 @@ class AccessibilityMenu extends HTMLElement {
                 outline-offset: 2px;
             }
 
-            /* Стилі для функцій доступності - більш глобальні селектори */
+            
             html.a11y-grayscale,
             body.a11y-grayscale {
                 filter: grayscale(100%) !important;
@@ -247,7 +247,7 @@ class AccessibilityMenu extends HTMLElement {
                 filter: contrast(150%) !important;
             }
 
-            /* Інші стилі доступності */
+            
             body.a11y-font-size *:not(nav-bar):not(nav-bar *):not(.no-effects):not(.no-effects *) {
                 font-size: var(--a11y-font-size) !important;
             }
@@ -329,7 +329,7 @@ class AccessibilityMenu extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Обробка кнопок збільшення/зменшення
+        
         this.querySelectorAll('[data-id]').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = e.target.closest('[data-id]').dataset.id;
@@ -338,7 +338,7 @@ class AccessibilityMenu extends HTMLElement {
             });
         });
 
-        // Обробка перемикачів
+        
         this.querySelectorAll('.a11y-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 const id = e.target.closest('.a11y-toggle').id;
@@ -346,12 +346,12 @@ class AccessibilityMenu extends HTMLElement {
             });
         });
 
-        // Кнопка скидання
+        
         this.querySelector('#resetAccessibility').addEventListener('click', () => {
             this.resetSettings();
         });
 
-        // Закриття по Escape
+        
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !this.querySelector('#accessibility-panel').classList.contains('hidden')) {
                 this.togglePanel();
@@ -385,11 +385,11 @@ class AccessibilityMenu extends HTMLElement {
     }
 
     applySettings() {
-        // Додаємо класи до html елемента також
+        
         document.documentElement.classList.toggle('a11y-grayscale', this.settings.grayscale);
         document.documentElement.classList.toggle('a11y-contrast', this.settings.contrast);
         
-        // Додаємо або видаляємо класи для body
+        
         document.body.classList.toggle('a11y-font-size', this.settings.fontSize !== 100);
         document.body.classList.toggle('a11y-spacing', this.settings.letterSpacing !== 0 || this.settings.lineHeight !== 150);
         document.body.classList.toggle('a11y-contrast', this.settings.contrast);
@@ -397,12 +397,12 @@ class AccessibilityMenu extends HTMLElement {
         document.body.classList.toggle('a11y-hide-images', this.settings.hideImages);
         document.body.classList.toggle('a11y-dyslexic-font', this.settings.dyslexicFont);
         
-        // Встановлюємо CSS змінні для використання в стилях
+        
         document.documentElement.style.setProperty('--a11y-font-size', `${this.settings.fontSize}%`);
         document.documentElement.style.setProperty('--a11y-letter-spacing', `${this.settings.letterSpacing}px`);
         document.documentElement.style.setProperty('--a11y-line-height', `${this.settings.lineHeight}%`);
         
-        // Оновлення стану кнопок
+        
         this.querySelectorAll('.a11y-toggle').forEach(btn => {
             btn.classList.toggle('active', this.settings[btn.id]);
         });
@@ -411,12 +411,12 @@ class AccessibilityMenu extends HTMLElement {
     }
 
     setupGlobalToggle() {
-        // Глобальна функція для відкриття панелі
+        
         window.toggleAccessibilityPanel = () => {
             this.togglePanel();
         };
 
-        // Знаходимо всі кнопки доступності
+        
         const accessibilityButtons = document.querySelectorAll(
             '#accessibility-toggle, #mobile-accessibility-toggle, [aria-label="Accessibility"], .accessibility-button'
         );
@@ -429,7 +429,7 @@ class AccessibilityMenu extends HTMLElement {
             });
         });
 
-        // Закриття при кліку поза панеллю
+        
         document.addEventListener('click', (e) => {
             if (this.isOpen) {
                 const panel = this.querySelector('#accessibility-panel');

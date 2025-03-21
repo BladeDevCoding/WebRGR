@@ -54,7 +54,7 @@ class CompanyNavigation extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Анімація появи навігації
+        
         setTimeout(() => {
             const navContainer = this.querySelector('#nav-container');
             if (navContainer) {
@@ -62,7 +62,7 @@ class CompanyNavigation extends HTMLElement {
             }
         }, 300);
 
-        // Плавна прокрутка при кліку
+        
         this.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -80,7 +80,7 @@ class CompanyNavigation extends HTMLElement {
             });
         });
         
-        // Підсвічування активного розділу при прокрутці
+        
         window.addEventListener('scroll', () => this.highlightActiveSection());
         window.addEventListener('load', () => this.highlightActiveSection());
     }

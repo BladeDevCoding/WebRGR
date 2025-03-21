@@ -57,7 +57,7 @@ class RepairNavigation extends HTMLElement {
     }
 
     setupEventListeners() {
-        // Обробка вибору в мобільній навігації
+        
         const mobileNav = this.querySelector('#mobile-nav');
         if (mobileNav) {
             mobileNav.addEventListener('change', () => {
@@ -74,7 +74,7 @@ class RepairNavigation extends HTMLElement {
             });
         }
 
-        // Плавна прокрутка при кліку на посилання
+        
         this.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -91,7 +91,7 @@ class RepairNavigation extends HTMLElement {
             });
         });
         
-        // Підсвічування активного розділу при прокрутці
+        
         window.addEventListener('scroll', () => this.highlightActiveSection());
         window.addEventListener('load', () => this.highlightActiveSection());
     }

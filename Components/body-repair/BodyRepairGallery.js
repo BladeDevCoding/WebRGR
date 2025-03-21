@@ -75,7 +75,7 @@ class BodyRepairGallery extends HTMLElement {
             
             let currentIndex = 0;
             
-            // Відкриття лайтбоксу при кліку на зображення
+            
             galleryItems.forEach((item, index) => {
                 item.addEventListener('click', () => {
                     const img = item.querySelector('img');
@@ -87,13 +87,13 @@ class BodyRepairGallery extends HTMLElement {
                 });
             });
             
-            // Закриття лайтбоксу
+            
             closeLightbox.addEventListener('click', () => {
                 lightbox.classList.add('hidden');
                 document.body.style.overflow = 'auto';
             });
             
-            // Перемикання на попереднє зображення
+            
             prevImage.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
                 const img = galleryItems[currentIndex].querySelector('img');
@@ -101,7 +101,7 @@ class BodyRepairGallery extends HTMLElement {
                 lightboxImage.alt = img.alt;
             });
             
-            // Перемикання на наступне зображення
+            
             nextImage.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % galleryItems.length;
                 const img = galleryItems[currentIndex].querySelector('img');
@@ -109,7 +109,7 @@ class BodyRepairGallery extends HTMLElement {
                 lightboxImage.alt = img.alt;
             });
             
-            // Закриття лайтбоксу при кліку на фон
+            
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) {
                     lightbox.classList.add('hidden');
@@ -117,7 +117,7 @@ class BodyRepairGallery extends HTMLElement {
                 }
             });
             
-            // Закриття лайтбоксу при натисканні Escape
+            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
                     lightbox.classList.add('hidden');
