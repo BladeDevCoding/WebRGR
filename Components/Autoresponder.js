@@ -11,15 +11,13 @@ class Autoresponder extends HTMLElement {
             phone: '',
             carInterest: ''
         };
-        this.conversationStage = 'greeting'; // greeting, collecting-info, answering, closing
+        this.conversationStage = 'greeting';
         this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
-        // Визначаємо поточну тему з документа
         this.darkMode = document.documentElement.classList.contains('dark');
         
-        // Слухаємо зміни теми через MutationObserver
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -31,12 +29,10 @@ class Autoresponder extends HTMLElement {
         
         observer.observe(document.documentElement, { attributes: true });
         
-        // Додаємо початкові повідомлення
         this.messages = [
             { sender: 'bot', text: 'Вітаю! Я віртуальний асистент AutoPrime. Як я можу допомогти вам сьогодні?', time: this.getCurrentTime() }
         ];
 
-        // Додаємо часті питання
         this.faq = [
             { 
                 question: 'Як оформити кредит на автомобіль?', 
@@ -73,7 +69,6 @@ class Autoresponder extends HTMLElement {
         this.render();
         this.setupEventListeners();
         
-        // Оновлюємо тему
         this.updateTheme();
     }
 
@@ -555,7 +550,6 @@ class Autoresponder extends HTMLElement {
     renderMessages() {
         let html = '';
         
-        // Рендеримо повідомлення
         this.messages.forEach(message => {
             html += `
                 <div class="message ${message.sender}">
@@ -565,7 +559,6 @@ class Autoresponder extends HTMLElement {
             `;
         });
         
-        // Додаємо індикатор набору тексту, якщо бот "друкує"
         if (this.isTyping) {
             html += `
                 <div class="typing-indicator">
@@ -576,7 +569,6 @@ class Autoresponder extends HTMLElement {
             `;
         }
         
-        // Додаємо кнопки варіантів відповіді, якщо вони є
         if (this.currentOptions && this.currentOptions.length > 0) {
             html += `
                 <div class="options-container">
@@ -601,13 +593,11 @@ class Autoresponder extends HTMLElement {
         const faqSection = this.shadowRoot.querySelector('.faq-section');
         const faqItems = this.shadowRoot.querySelectorAll('.faq-item');
 
-        // Відкриття/закриття чату
         chatButton.addEventListener('click', () => {
             this.isOpen = !this.isOpen;
             chatWindow.classList.toggle('open', this.isOpen);
             chatButton.classList.remove('pulse');
             
-            // Видаляємо значок непрочитаних повідомлень
             const unreadBadge = chatButton.querySelector('.unread-badge');
             if (unreadBadge) {
                 unreadBadge.remove();
@@ -624,24 +614,20 @@ class Autoresponder extends HTMLElement {
             chatWindow.classList.remove('open');
         });
 
-        // Перемикання теми
         themeToggle.addEventListener('click', () => {
             this.darkMode = !this.darkMode;
             this.updateTheme();
             
-            // Синхронізуємо з глобальною темою сайту
             if (window.toggleTheme) {
                 window.toggleTheme();
             }
         });
 
-        // Відкриття/закриття FAQ
         faqToggle.addEventListener('click', () => {
             this.faqExpanded = !this.faqExpanded;
             faqSection.classList.toggle('expanded', this.faqExpanded);
         });
 
-        // Відправка повідомлення
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const message = chatInput.value.trim();
@@ -651,43 +637,34 @@ class Autoresponder extends HTMLElement {
             }
         });
 
-        // Обробка кліків на FAQ
         faqItems.forEach(item => {
             item.addEventListener('click', () => {
                 const question = item.getAttribute('data-question');
                 const answer = item.getAttribute('data-answer');
                 
-                // Додаємо питання як повідомлення користувача
                 this.addMessage('user', question);
                 
-                // Імітуємо набір тексту ботом
                 this.showTypingIndicator();
                 
-                // Через невелику затримку додаємо відповідь від бота
                 setTimeout(() => {
                     this.hideTypingIndicator();
                     this.addMessage('bot', answer);
                     
-                    // Знаходимо відповідне питання в масиві FAQ
                     const faqItem = this.faq.find(f => f.question === question);
                     
-                    // Якщо є додаткові опції, показуємо їх
                     if (faqItem && faqItem.followUp) {
                         if (faqItem.options) {
                             this.showOptions(faqItem.options);
                         } else if (faqItem.expectInput) {
-                            // Нічого не робимо, чекаємо на введення користувача
                         }
                     }
                 }, 1500);
                 
-                // Закриваємо FAQ
                 this.faqExpanded = false;
                 faqSection.classList.remove('expanded');
             });
         });
 
-        // Делегування подій для кнопок опцій
         this.shadowRoot.addEventListener('click', (e) => {
             if (e.target.classList.contains('option-button')) {
                 const value = e.target.getAttribute('data-value');
@@ -697,21 +674,16 @@ class Autoresponder extends HTMLElement {
     }
 
     handleOptionClick(value) {
-        // Додаємо вибір користувача як повідомлення
         this.addMessage('user', value);
         
-        // Очищаємо поточні опції
         this.currentOptions = null;
         this.updateChatBody();
         
-        // Імітуємо набір тексту ботом
         this.showTypingIndicator();
         
-        // Обробляємо відповідь в залежності від вибору
         setTimeout(() => {
             this.hideTypingIndicator();
             
-            // Логіка відповіді на основі вибору
             if (value === 'Так, хочу консультацію') {
                 this.addMessage('bot', 'Чудово! Для організації консультації, будь ласка, залиште свій номер телефону, і наш фінансовий консультант зв\'яжеться з вами протягом робочого дня.');
                 this.conversationStage = 'collecting-info';
@@ -757,19 +729,14 @@ class Autoresponder extends HTMLElement {
     }
 
     sendMessage(text) {
-        // Додаємо повідомлення користувача
         this.addMessage('user', text);
         
-        // Імітуємо набір тексту ботом
         this.showTypingIndicator();
         
-        // Імітуємо відповідь бота через невелику затримку
         setTimeout(() => {
             this.hideTypingIndicator();
             
-            // Обробка повідомлення в залежності від стадії розмови
             if (this.conversationStage === 'collecting-info') {
-                // Перевіряємо, чи схоже на номер телефону
                 if (/^\+?\d{10,13}$/.test(text.replace(/\s+/g, ''))) {
                     this.userInfo.phone = text;
                     this.addMessage('bot', 'Дякую! Наш менеджер зв\'яжеться з вами найближчим часом. Чи є у вас ще якісь питання?');
@@ -778,11 +745,9 @@ class Autoresponder extends HTMLElement {
                     this.addMessage('bot', 'Будь ласка, введіть коректний номер телефону у форматі +380XXXXXXXXX або 0XXXXXXXXX');
                 }
             } else {
-                // Стандартна логіка обробки повідомлень
                 let botResponse = "Дякую за ваше повідомлення! Наш менеджер зв'яжеться з вами найближчим часом.";
                 let showOptions = false;
                 
-                // Аналіз ключових слів у повідомленні
                 const lowerText = text.toLowerCase();
                 
                 if (lowerText.includes('ціна') || lowerText.includes('вартість') || lowerText.includes('коштує')) {
@@ -833,9 +798,7 @@ class Autoresponder extends HTMLElement {
                 
                 this.addMessage('bot', botResponse);
                 
-                // Якщо не показуємо опції через спеціальну логіку вище
                 if (!showOptions) {
-                    // Додаємо стандартні опції для продовження розмови
                     setTimeout(() => {
                         this.showOptions(['Дізнатися про акції', 'Записатися на тест-драйв', 'Розрахувати кредит', 'Зв\'язатися з менеджером']);
                     }, 1000);
@@ -851,11 +814,9 @@ class Autoresponder extends HTMLElement {
             time: this.getCurrentTime()
         });
         
-        // Оновлюємо відображення повідомлень
         const chatBody = this.shadowRoot.querySelector('.chat-body');
         chatBody.innerHTML = this.renderMessages();
         
-        // Прокручуємо до останнього повідомлення
         this.scrollToBottom();
     }
 
@@ -870,15 +831,12 @@ class Autoresponder extends HTMLElement {
     }
 
     showNotification(message) {
-        // Створюємо елемент сповіщення
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.textContent = message;
 
-        // Додаємо до shadow DOM
         this.shadowRoot.appendChild(notification);
 
-        // Видаляємо через 3 секунди
         setTimeout(() => {
             notification.style.opacity = '0';
             notification.style.transform = 'translateY(10px)';
@@ -917,7 +875,6 @@ class Autoresponder extends HTMLElement {
             }
         }
         
-        // Оновлюємо іконку перемикача теми
         const themeToggle = this.shadowRoot.querySelector('.theme-toggle svg');
         if (themeToggle) {
             if (this.darkMode) {
@@ -933,5 +890,4 @@ class Autoresponder extends HTMLElement {
     }
 }
 
-// Реєструємо веб-компонент
 customElements.define('auto-responder', Autoresponder); 

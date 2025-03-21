@@ -29,7 +29,6 @@ class GiftModal extends HTMLElement {
 
     connectedCallback() {
         if (this.isFirstVisit) {
-            // Слухаємо зміни теми через MutationObserver
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (mutation.attributeName === 'class') {
@@ -44,8 +43,7 @@ class GiftModal extends HTMLElement {
             this.render();
             this.setupEventListeners();
             this.updateTheme();
-            
-            // Показуємо модальне вікно з невеликою затримкою
+
             setTimeout(() => {
                 this.showModal();
             }, 1500);
@@ -554,30 +552,24 @@ class GiftModal extends HTMLElement {
         const continueButton = this.shadowRoot.querySelector('.continue-button');
         const selectedCountElement = this.shadowRoot.querySelector('.selected-count');
 
-        // Закриття модального вікна
         closeButton.addEventListener('click', () => {
             this.hideModal();
             localStorage.setItem('giftModalShown', 'true');
         });
 
-        // Вибір подарунків
         giftBoxes.forEach(box => {
             box.addEventListener('click', () => {
                 if (this.selectedGifts.length < this.maxSelections && !box.classList.contains('opened')) {
                     const giftId = parseInt(box.getAttribute('data-id'));
                     box.classList.add('opened');
                     
-                    // Додаємо подарунок до вибраних
                     const gift = this.gifts.find(g => g.id === giftId);
                     this.selectedGifts.push(gift);
                     
-                    // Оновлюємо лічильник
                     selectedCountElement.textContent = this.selectedGifts.length;
                     
-                    // Створюємо конфетті
                     this.createConfetti(box);
                     
-                    // Активуємо кнопку, якщо вибрано максимальну кількість подарунків
                     if (this.selectedGifts.length === this.maxSelections) {
                         continueButton.removeAttribute('disabled');
                     }
@@ -585,7 +577,6 @@ class GiftModal extends HTMLElement {
             });
         });
 
-        // Перехід до екрану з промокодом
         continueButton.addEventListener('click', () => {
             this.showPromoView();
         });
@@ -615,9 +606,8 @@ class GiftModal extends HTMLElement {
             confetti.style.backgroundColor = this.getRandomColor();
             confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
             
-            // Різні форми конфетті
             if (i % 3 === 0) {
-                confetti.style.borderRadius = '50%'; // Круг
+                confetti.style.borderRadius = '50%';
             } else if (i % 3 === 1) {
                 confetti.style.width = '5px';
                 confetti.style.height = '15px';
@@ -628,7 +618,6 @@ class GiftModal extends HTMLElement {
             
             document.body.appendChild(confetti);
             
-            // Анімація падіння
             const animationDuration = 1 + Math.random() * 2;
             const xDistance = (Math.random() - 0.5) * 200;
             
@@ -636,7 +625,6 @@ class GiftModal extends HTMLElement {
             confetti.style.animationTimingFunction = 'cubic-bezier(.25,.46,.45,.94)';
             confetti.style.transform = `translateX(${xDistance}px) rotate(${Math.random() * 360}deg)`;
             
-            // Видаляємо після анімації
             setTimeout(() => {
                 confetti.remove();
             }, animationDuration * 1000);
@@ -663,7 +651,6 @@ class GiftModal extends HTMLElement {
         const modalFooter = this.shadowRoot.querySelector('.modal-footer');
         const selectedGiftsContainer = this.shadowRoot.querySelector('.selected-gifts');
         
-        // Заповнюємо контейнер вибраними подарунками
         selectedGiftsContainer.innerHTML = this.selectedGifts.map(gift => `
             <div class="selected-gift-card">
                 <div class="gift-icon">
@@ -674,17 +661,14 @@ class GiftModal extends HTMLElement {
             </div>
         `).join('');
         
-        // Перемикаємо відображення
         selectionView.style.display = 'none';
         promoView.style.display = 'block';
         modalFooter.style.display = 'none';
         
-        // Створюємо святковий ефект конфетті
         this.celebrateWithConfetti();
     }
     
     celebrateWithConfetti() {
-        // Додаємо стилі для анімації конфетті
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
             @keyframes confettiDrop {
@@ -714,9 +698,8 @@ class GiftModal extends HTMLElement {
                 confetti.style.zIndex = '10000';
                 confetti.style.pointerEvents = 'none';
                 
-                // Різні форми конфетті
                 if (i % 3 === 0) {
-                    confetti.style.borderRadius = '50%'; // Круг
+                    confetti.style.borderRadius = '50%';
                 } else if (i % 3 === 1) {
                     confetti.style.width = '7px';
                     confetti.style.height = '20px';
@@ -727,13 +710,11 @@ class GiftModal extends HTMLElement {
                 
                 document.body.appendChild(confetti);
                 
-                // Анімація падіння
                 const animationDuration = 3 + Math.random() * 3;
                 
                 confetti.style.animation = `confettiDrop ${animationDuration}s forwards`;
                 confetti.style.animationTimingFunction = 'cubic-bezier(.25,.46,.45,.94)';
                 
-                // Видаляємо після анімації
                 setTimeout(() => {
                     confetti.remove();
                 }, animationDuration * 1000);
@@ -742,5 +723,4 @@ class GiftModal extends HTMLElement {
     }
 }
 
-// Реєструємо веб-компонент
 customElements.define('gift-modal', GiftModal); 
